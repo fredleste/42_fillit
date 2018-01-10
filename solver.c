@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.h                                             :+:      :+:    :+:   */
+/*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/08 11:40:08 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/08 18:01:08 by mbaron           ###   ########.fr       */
+/*   Created: 2018/01/10 16:51:32 by mbaron            #+#    #+#             */
+/*   Updated: 2018/01/10 17:41:21 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_H
-# define TEST_H
-# include "tetras_lib.h"
+#include "main.h"
 
-int test_params(int argc);
-int test_source(char *file_name, t_tetra tetras_lib[TETRAS_LIB_NB],
-	short int *tetras);
-#endif
+int		solver(t_tetra **tetras, int tetras_nb, t_bt **bt)
+{
+	return (0);
+}

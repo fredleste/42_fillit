@@ -6,7 +6,7 @@
 #    By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/08 14:19:31 by mbaron            #+#    #+#              #
-#    Updated: 2018/01/08 19:33:15 by mbaron           ###   ########.fr        #
+#    Updated: 2018/01/10 17:31:11 by mbaron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ LIB			=		-L./libft -lft
 HEADERS		=		-I$(DIR_HEADERS)
 
 SRCS		=		main.c		\
-					grid.c		\
+					solver.c		\
 					output.c	\
 					test.c		\
 					tetras_lib.c
