@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 13:01:42 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/08 18:15:41 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/10 17:16:39 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		put_error(int error)
 	return (1);
 }
 
-void	put_grid(char grid[GRID_MAX][GRID_MAX], int grid_length)
+void	put_grid(t_bt **bt, int grid_size)
 {
 	ft_putstr("put_grid\n");
 }

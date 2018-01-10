@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   grid.c                                             :+:      :+:    :+:   */
+/*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/08 11:44:43 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/08 13:46:26 by mbaron           ###   ########.fr       */
+/*   Created: 2018/01/10 16:51:32 by mbaron            #+#    #+#             */
+/*   Updated: 2018/01/10 17:05:26 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "grid.h"
+#include "solver.h"
 
-int		get_grid(short int *tetras, unsigned int tetras_length,
-	char grid[GRID_MAX][GRID_MAX])
+int		solver(t_tetra **tetras, int tetras_nb, t_bt **bt)
 {
 	return (0);
 }
