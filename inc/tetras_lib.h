@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 11:29:18 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/10 17:41:08 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/10 19:48:15 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@
 
 typedef struct	s_tetra
 {
-	char				bin[GRID_MAX];
 	unsigned short int	n;
 }				t_tetra;
 #endif
