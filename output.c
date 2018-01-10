@@ -6,11 +6,11 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 13:01:42 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/10 17:25:00 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/10 17:39:46 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "output.h"
+#include "main.h"
 
 int		put_error(int error)
 {

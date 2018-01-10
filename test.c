@@ -6,11 +6,11 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 11:39:33 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/10 17:01:53 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/10 17:41:28 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test.h"
+#include "main.h"
 
 int		test_params(int argc)
 {

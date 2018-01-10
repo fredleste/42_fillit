@@ -6,11 +6,11 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:51:32 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/10 17:05:26 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/10 17:41:21 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solver.h"
+#include "main.h"
 
 int		solver(t_tetra **tetras, int tetras_nb, t_bt **bt)
 {

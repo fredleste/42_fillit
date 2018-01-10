@@ -6,10 +6,11 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 11:36:44 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/08 13:52:58 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/10 17:42:08 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "main.h"
 #include "tetras_lib.h"
 
 void	init_tetras_lib(t_tetra tetras_lib[TETRAS_LIB_NB])
