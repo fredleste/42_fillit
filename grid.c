@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 08:31:38 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/11 09:13:19 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/11 09:24:15 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ int 	init_grid(char **grid, int grid_size)
 	{
 		if (!(grid[l] = (char *)malloc(grid_size * sizeof(char))))
 		{
-			c = c - 1;
-			while (c > -1)
-				free(grid[c--]);
-			free(grid);
+			del_grid(grid, l - 1);
 			return (0);
 		}
 		c = 0;
@@ -39,7 +36,6 @@ int 	init_grid(char **grid, int grid_size)
 	return (1);
 }
 
-
 int 	fill_grid(char **grid, int grid_size, int tetras_nb, t_bt **bt)
 {
 	return (1);
@@ -47,10 +43,35 @@ int 	fill_grid(char **grid, int grid_size, int tetras_nb, t_bt **bt)
 
 int 	write_grid(char **grid, int grid_size)
 {
+	int		l;
+	int		c;
+	
+	l = 0;
+	while (l < grid_size)
+	{
+		c = 0;
+		while (c < grid_size)
+		{
+			ft_putchar(grid[l][c]);
+			c++;
+		}
+		ft_putchar('\n');
+		l++;
+	}
 	return (1);
 }
 
 int 	del_grid(char **grid, int grid_size)
 {
+	int		l;
+	
+	l = 0;
+	while (l < grid_size)
+	{
+		free(grid[l]);
+		grid[l++] = NULL;
+	}
+	free(grid);
+	grid = NULL;
 	return (1);
 }
