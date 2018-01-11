@@ -6,10 +6,11 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 19:52:43 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/11 13:13:34 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/11 17:37:21 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "main.h"
 #include "mock.h"
 
@@ -27,7 +28,6 @@ int		test_source_mock(char *file_name, t_tetra tetras_lib[],
 	t_piece pieces[])
 {
 	int		i;
-	int		j;
 
 	i = 0;
 	while (i < MOCK_PIECES_NB)
@@ -40,21 +40,31 @@ int		test_source_mock(char *file_name, t_tetra tetras_lib[],
 	return (MOCK_PIECES_NB);
 }
 
-int		solver_mock(t_piece pieces[], int pieces_nb, t_list **bt)
+int		solver_mock(t_piece pieces[], int pieces_nb, t_list **p_bt)
 {
-	/*
-	int		p;
-	t_piece	piece;
+	int		i;
+	t_list	*new;
+	t_list	*bt;
 	
-
-	if (!pieces || !pieces_nb)
+	if (!pieces_nb)
 		return (-1);
-	/*
-	p = 0;
-	while (p < pieces_nb)
+	i = 0;
+	while (i < pieces_nb)
 	{
-		p++;
+		new = ft_mba_lstnew((void const *)&(pieces[i]), sizeof(void *));
+		if (!new)
+		{
+			put_error_log("Malloc error : ft_mba_new");
+			return (-1);
+		}
+		if (!i)
+			bt = new;
+		else
+		{
+			new->next = bt;
+		}
+		i++;
 	}
-	*/
+	*p_bt = new;
 	return (MOCK_GRID_SIZE);
 }

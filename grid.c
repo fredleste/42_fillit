@@ -6,20 +6,23 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 08:31:38 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/11 11:22:57 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/11 17:32:32 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "main.h"
 #include "grid.h"
 
-int 	init_grid(char **grid, int grid_size)
+char	**init_grid(int grid_size)
 {
-	int		l;
-	int		c;
+	unsigned char	l;
+	unsigned char	c;
+	char			**grid;
 	
+	grid = NULL;
 	if (!(grid = (char **)malloc(grid_size * sizeof(char *))))
-		return (0);
+		return (NULL);
 	l = 0;
 	while (l < grid_size)
 	{
@@ -30,22 +33,25 @@ int 	init_grid(char **grid, int grid_size)
 		}
 		c = 0;
 		while (c < grid_size)
-			grid[l][c++] = C_POINT;
+		{
+			grid[l][c] = C_POINT;
+			c++;
+		}
 		l++;
 	}
-	return (1);
+	return (grid);
 }
 
-int 	fill_grid(char **grid, int grid_size, int pieces_nb, t_list **bt)
+int 	fill_grid(char **grid, int grid_size, int pieces_nb, t_list *bt)
 {
 	t_list	*tmp;
 	t_piece	*piece;
 	char	alphabet[27];
 	int		t;
 	
-	ft_strcpy(alphabet, ALPHABET);
-	tmp = *bt;
-	t = pieces_nb;
+	strcpy(alphabet, ALPHABET);
+	tmp = bt;
+	t = pieces_nb - 1;
 	while (tmp)
 	{
 		piece = (t_piece *)tmp->content;

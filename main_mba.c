@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:02:11 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/11 13:15:35 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/11 17:03:43 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ int		main(int argc, char *argv[])
 	t_tetra			tetras_lib[TETRAS_LIB_NB];
 	t_piece			pieces[PIECES_NB_MAX];
 	int				pieces_nb;
-	t_list			**bt;
+	t_list			*bt;
 	int				grid_size;
+	t_piece			*last;
 	
 	put_error_log("-------------------------------\n------------------ INIALISATION\n\n");
 	if (!test_params(argc))
@@ -34,10 +35,9 @@ int		main(int argc, char *argv[])
 	printf("nb_pieces : %d\n", pieces_nb);
 	put_error_log("-------------------------------\n------------------ SOLVER\n\n");
 	bt = NULL;
-	grid_size = solver_mock(pieces, pieces_nb, bt);
+	grid_size = solver_mock(pieces, pieces_nb, &bt);
 	if (grid_size == -1)
 		return (put_error(1));
-	printf("grid_size : %d\n", grid_size);
 	put_error_log("-------------------------------\n------------------ PUT GRID\n\n");
 	return	(put_grid(bt, pieces_nb, grid_size));
 }
