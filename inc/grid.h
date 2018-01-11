@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solver.c                                           :+:      :+:    :+:   */
+/*   grid.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/10 16:51:32 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/11 11:10:26 by mbaron           ###   ########.fr       */
+/*   Created: 2018/01/11 08:31:08 by mbaron            #+#    #+#             */
+/*   Updated: 2018/01/11 11:11:32 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#ifndef GRID_H
+# define GRID_H
+# define C_POINT '.'
+# define ALPHABET "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-int		solver(t_piece *pieces, int pieces_nb, t_list **bt)
-{
-	return (0);
-}
+int 	init_grid(char **grid, int grid_size);
+int 	fill_grid(char **grid, int grid_size, int tetras_nb, t_list **bt);
+int 	write_grid(char **grid, int grid_size);
+int 	del_grid(char **grid, int grid_size);
+#endif

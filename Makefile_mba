@@ -6,7 +6,7 @@
 #    By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/08 14:19:31 by mbaron            #+#    #+#              #
-#    Updated: 2018/01/11 08:39:16 by mbaron           ###   ########.fr        #
+#    Updated: 2018/01/10 20:01:11 by mbaron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ LIB			=		-L./libft -lft
 
 HEADERS		=		-I$(DIR_HEADERS)
 
-SRCS		=		main.c		\
+SRCS		=		main_mba.c	\
+					mock.c		\
 					solver.c	\
 					output.c	\
 					grid.c		\
