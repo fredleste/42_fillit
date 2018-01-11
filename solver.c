@@ -6,13 +6,13 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:51:32 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/11 11:10:26 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/11 13:14:16 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-int		solver(t_piece *pieces, int pieces_nb, t_list **bt)
+int		solver(t_piece pieces[], int pieces_nb, t_list **bt)
 {
 	return (0);
 }
