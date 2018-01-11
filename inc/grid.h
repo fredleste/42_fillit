@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 08:31:08 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/11 09:02:58 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/11 09:12:49 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,4 +14,7 @@
 # define GRID_H
 # define C_POINT '.'
 int 	init_grid(char **grid, int grid_size);
+int 	fill_grid(char **grid, int grid_size, int tetras_nb, t_bt **bt);
+int 	write_grid(char **grid, int grid_size);
+int 	del_grid(char **grid, int grid_size);
 #endif

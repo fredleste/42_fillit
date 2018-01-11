@@ -6,9 +6,12 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 08:31:38 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/11 09:01:48 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/11 09:13:19 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "main.h"
+#include "grid.h"
 
 int 	init_grid(char **grid, int grid_size)
 {
@@ -33,5 +36,21 @@ int 	init_grid(char **grid, int grid_size)
 			grid[l][c++] = C_POINT;
 		l++;
 	}
+	return (1);
+}
+
+
+int 	fill_grid(char **grid, int grid_size, int tetras_nb, t_bt **bt)
+{
+	return (1);
+}
+
+int 	write_grid(char **grid, int grid_size)
+{
+	return (1);
+}
+
+int 	del_grid(char **grid, int grid_size)
+{
 	return (1);
 }
