@@ -6,11 +6,12 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 13:01:42 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/11 08:20:07 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/11 08:41:21 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
+#include "grid.h"
 
 int		put_error(int error)
 {
@@ -27,8 +28,14 @@ int		put_error_log(const char *str)
 	return (1);
 }
 
-void	put_grid(t_bt **bt, int tetras_nb, int grid_size)
+int		put_grid(t_bt **bt, int tetras_nb, int grid_size)
 {
+	char	**grid;
+	
 	if (!bt || !*bt || !tetras_nb || !grid_size)
 		return (put_error(1));
+	grid = NULL;
+	if (!init_grid(grid, grid_size))
+		return (put_error_log("Malloc error : init_grid"));
+	
 }
