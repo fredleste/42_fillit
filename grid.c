@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 08:31:38 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/11 09:49:49 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/11 10:18:26 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,23 @@ int 	init_grid(char **grid, int grid_size)
 	return (1);
 }
 
-int 	fill_grid(char **grid, int grid_size, int tetras_nb, t_bt **bt)
+int 	fill_grid(char **grid, int grid_size, int pieces_nb, t_bt **bt)
 {
 	t_bt	*tmp;
+	t_piece	*piece;
+	char	alphabet[27];
+	int		t;
 	
+	ft_strcpy(alphabet, ALPHABET);
 	tmp = *bt;
+	t = pieces_nb;
 	while (tmp)
 	{
+		piece = (t_piece *)tmp->content;
+		grid[piece->l][piece->c] = alphabet[t];
+		t--;
 		tmp = tmp->next;
 	}
-	
 	return (1);
 }
 
