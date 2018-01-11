@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:03:55 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/10 20:42:45 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/11 08:17:34 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ int 	test_source(char *file_name, t_tetra tetras_lib[], t_tetra **tetras);
 int		solver(t_tetra **tetras, int tetras_nb, t_bt **bt);
 int		put_error(int error);
 int		put_error_log(const char *str);
-void	put_grid(t_bt **bt, int grid_size);
+void	put_grid(t_bt **bt, int tetras_nb, int grid_size);
 #endif

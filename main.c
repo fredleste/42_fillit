@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:02:11 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/10 16:24:28 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/11 08:25:06 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ int		main(int argc, char *argv[])
 	grid_size = solver(tetras, tetras_nb, bt);
 	if (grid_size == -1)
 		return (put_error(1));
-	put_grid(bt, grid_size);
+	put_grid(bt, tetras_nb, grid_size);
 	return (0);
 }
