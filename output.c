@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 13:01:42 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/11 09:10:43 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/11 09:50:50 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,5 @@ int		put_grid(t_bt **bt, int tetras_nb, int grid_size)
 		return (put_error_log("Error in write_grid"));
 	if (!del_grid(grid, grid_size))
 		return (put_error_log("Error in del_grid"));
+	return (1);
 }

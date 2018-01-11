@@ -6,13 +6,13 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:51:32 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/10 17:41:21 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/11 09:47:37 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-int		solver(t_tetra **tetras, int tetras_nb, t_bt **bt)
+int		solver(t_piece *pieces, int pieces_nb, t_bt **bt)
 {
 	return (0);
 }
