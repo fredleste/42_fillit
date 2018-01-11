@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 19:52:43 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/10 20:29:28 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/11 11:19:45 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,35 +15,48 @@
 
 void	init_tetras_lib_mock(t_tetra tetras_lib[])
 {
-	tetras_lib[0].n = 0xf000;
-	tetras_lib[1].n = 0x888;
+	tetras_lib[0].n = MOCK_TETRA_N_0;
+	tetras_lib[0].h = MOCK_TETRA_H_0;
+	tetras_lib[0].w = MOCK_TETRA_W_0;
+	tetras_lib[1].n = MOCK_TETRA_N_1;
+	tetras_lib[1].h = MOCK_TETRA_H_1;
+	tetras_lib[1].w = MOCK_TETRA_W_1;
 }
 
 int		test_source_mock(char *file_name, t_tetra tetras_lib[],
-	t_tetra **tetras)
+	t_piece *pieces)
 {
 	int		i;
 	int		j;
 		
-	if (!(tetras = (t_tetra **)malloc(2 * sizeof(t_tetra *))))
+	if (!(pieces = (t_piece *)malloc(MOCK_PIECES_NB * sizeof(t_piece))))
 	{
-		put_error_log("malloc echec - mock.c - l 27");
+		put_error_log("Malloc echec - mock.c");
 		return (-1);
 	}
 	i = 0;
-	while (i < 2)
+	while (i < MOCK_PIECES_NB)
 	{
-		if (!(tetras[i] = (t_tetra *)malloc(sizeof(t_tetra))))
-		{
-			j = i - 1;
-			while (j > -1)
-				free(tetras[j--]);
-			free(tetras);
-			put_error_log("malloc echec - mock.c - l 38");
-			return (-1);
-		}
-		tetras[i] = &(tetras_lib[i]);
+		pieces[i].tetra = &(tetras_lib)[i];
+		pieces[i].l = 4 * i;
+		pieces[i].c = 4 * i;
 		i++;
 	}
-	return (0);
+	return (MOCK_PIECES_NB);
+}
+
+int		solver_mock(t_piece *pieces, int pieces_nb, t_list **bt)
+{
+	int		p;
+	t_piece	piece;
+	
+	if (!pieces || !pieces_nb)
+		return (-1);
+	
+	p = 0;
+	while (p < pieces_nb)
+	{
+		p++;
+	}
+	return (MOCK_GRID_SIZE);
 }
