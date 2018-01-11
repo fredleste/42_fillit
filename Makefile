@@ -6,7 +6,7 @@
 #    By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/08 14:19:31 by mbaron            #+#    #+#              #
-#    Updated: 2018/01/10 20:01:11 by mbaron           ###   ########.fr        #
+#    Updated: 2018/01/11 08:39:16 by mbaron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ HEADERS		=		-I$(DIR_HEADERS)
 SRCS		=		main.c		\
 					solver.c	\
 					output.c	\
+					grid.c		\
 					test.c		\
 					tetras_lib.c
 
