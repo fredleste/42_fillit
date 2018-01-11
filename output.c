@@ -6,12 +6,13 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 13:01:42 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/11 17:29:39 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/11 19:26:35 by fleste-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "main.h"
+#include "output.h"
 #include "grid.h"
 
 int		put_error(int error)
@@ -32,7 +33,7 @@ int		put_error_log(const char *str)
 int		put_grid(t_list *bt, int pieces_nb, int grid_size)
 {
 	char	**grid;
-	
+
 	if (!pieces_nb || !grid_size)
 		return (put_error(1));
 	grid = NULL;

@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solver.c                                           :+:      :+:    :+:   */
+/*   output.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fleste-l <fleste-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/10 16:51:32 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/11 19:36:57 by mbaron           ###   ########.fr       */
+/*   Created: 2018/01/11 18:59:06 by fleste-l          #+#    #+#             */
+/*   Updated: 2018/01/11 19:00:04 by fleste-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
-#include "solver.h"
+#ifndef OUTPUT_H
+# define OUTPUT_H
+# define FILLIT_USAGE "usage: ./fillit source_file\n"
 
-int		solver(t_piece pieces[], int pieces_nb, t_list **bt)
-{
-	return (0);
-}
+int		put_error(int error);
+int		put_error_log(const char *str);
+int		put_grid(t_list **bt, int pieces_nb, int grid_size);
+#endif
