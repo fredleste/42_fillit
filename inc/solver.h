@@ -1,19 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solver.c                                           :+:      :+:    :+:   */
+/*   solver.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fleste-l <fleste-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/10 16:51:32 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/11 19:26:49 by fleste-l         ###   ########.fr       */
+/*   Created: 2018/01/11 18:56:40 by fleste-l          #+#    #+#             */
+/*   Updated: 2018/01/11 18:58:27 by fleste-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
-#include "solver.h"
+#ifndef SOLVER_H
+# define SOLVER_H
 
-int		solver(t_piece pieces[], int pieces_nb, t_list *bt)
-{
-	return (0);
-}
+int		solver(t_piece *pieces, int pieces_nb, t_list **bt);
+#endif
