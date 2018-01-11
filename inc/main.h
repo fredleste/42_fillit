@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:03:55 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/11 11:10:05 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/11 11:31:22 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 typedef struct	s_piece
 {
-	t_tetra		tetra;
+	t_tetra		*tetra;
 	short int 	l;
 	short int 	c;
 }				t_piece;
