@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:02:11 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/11 09:41:46 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/11 11:09:59 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		main(int argc, char *argv[])
 	t_tetra			tetras_lib[TETRAS_LIB_NB];
 	t_piece			*pieces;
 	int				pieces_nb;
-	t_bt			**bt;
+	t_list			**bt;
 	int				grid_size;
 
 	if (!test_params(argc))

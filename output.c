@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 13:01:42 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/11 09:50:50 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/11 11:21:50 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		put_error_log(const char *str)
 	return (1);
 }
 
-int		put_grid(t_bt **bt, int tetras_nb, int grid_size)
+int		put_grid(t_list **bt, int tetras_nb, int grid_size)
 {
 	char	**grid;
 	
