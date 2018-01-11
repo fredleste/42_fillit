@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 19:55:36 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/11 11:16:21 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/11 12:02:58 by fleste-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # define MOCK_TETRA_N_0 0xf000
 # define MOCK_TETRA_H_0 1
 # define MOCK_TETRA_W_0 4
-# define MOCK_TETRA_N_1 0x888
+# define MOCK_TETRA_N_1 0x8888
 # define MOCK_TETRA_H_1 4
 # define MOCK_TETRA_W_1 1
 # define MOCK_TETRAS_NB 2

@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 11:29:18 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/11 11:57:28 by fleste-l         ###   ########.fr       */
+/*   Updated: 2018/01/11 12:12:03 by fleste-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 typedef struct	s_tetra
 {
 	unsigned short int	n;
-	char				w;
-	char				h;
+	unsigned char		w;
+	unsigned char		h;
 }				t_tetra;
 #endif

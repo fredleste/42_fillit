@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:03:55 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/11 11:31:22 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/11 12:10:26 by fleste-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 
 typedef struct	s_piece
 {
-	t_tetra		*tetra;
-	short int 	l;
-	short int 	c;
+	t_tetra			*tetra;
+	unsigned char 	l;
+	unsigned char 	c;
 }				t_piece;
 void 	init_tetras_lib	(t_tetra tetras_lib[]);
 int 	test_params(int argc);
