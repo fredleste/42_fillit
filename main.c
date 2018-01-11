@@ -6,11 +6,15 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:02:11 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/11 11:09:59 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/11 19:02:08 by fleste-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
+#include "tetras_lib.h"
+#include "test.h"
+#include "solver.h"
+#include "output.h"
 
 int		main(int argc, char *argv[])
 {
@@ -31,5 +35,5 @@ int		main(int argc, char *argv[])
 	grid_size = solver(pieces, pieces_nb, bt);
 	if (grid_size == -1)
 		return (put_error(1));
-	return	(put_grid(bt, pieces_nb, grid_size));
+	return (put_grid(bt, pieces_nb, grid_size));
 }

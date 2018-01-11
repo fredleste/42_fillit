@@ -6,18 +6,19 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 08:31:38 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/11 11:22:57 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/11 19:11:14 by fleste-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 #include "grid.h"
+#include "test.h"
 
-int 	init_grid(char **grid, int grid_size)
+int		init_grid(char **grid, int grid_size)
 {
 	int		l;
 	int		c;
-	
+
 	if (!(grid = (char **)malloc(grid_size * sizeof(char *))))
 		return (0);
 	l = 0;
@@ -36,13 +37,13 @@ int 	init_grid(char **grid, int grid_size)
 	return (1);
 }
 
-int 	fill_grid(char **grid, int grid_size, int pieces_nb, t_list **bt)
+int		fill_grid(char **grid, int grid_size, int pieces_nb, t_list **bt)
 {
 	t_list	*tmp;
 	t_piece	*piece;
 	char	alphabet[27];
 	int		t;
-	
+
 	ft_strcpy(alphabet, ALPHABET);
 	tmp = *bt;
 	t = pieces_nb;
@@ -56,11 +57,11 @@ int 	fill_grid(char **grid, int grid_size, int pieces_nb, t_list **bt)
 	return (1);
 }
 
-int 	write_grid(char **grid, int grid_size)
+int		write_grid(char **grid, int grid_size)
 {
 	int		l;
 	int		c;
-	
+
 	l = 0;
 	while (l < grid_size)
 	{
@@ -76,10 +77,10 @@ int 	write_grid(char **grid, int grid_size)
 	return (1);
 }
 
-int 	del_grid(char **grid, int grid_size)
+int		del_grid(char **grid, int grid_size)
 {
 	int		l;
-	
+
 	l = 0;
 	while (l < grid_size)
 	{
