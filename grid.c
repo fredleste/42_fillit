@@ -6,11 +6,32 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 08:31:38 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/11 08:37:50 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/11 09:01:48 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int 	init_grid(char **grid, int grid_size)
 {
+	int		l;
+	int		c;
+	
+	if (!(grid = (char **)malloc(grid_size * sizeof(char *))))
+		return (0);
+	l = 0;
+	while (l < grid_size)
+	{
+		if (!(grid[l] = (char *)malloc(grid_size * sizeof(char))))
+		{
+			c = c - 1;
+			while (c > -1)
+				free(grid[c--]);
+			free(grid);
+			return (0);
+		}
+		c = 0;
+		while (c < grid_size)
+			grid[l][c++] = C_POINT;
+		l++;
+	}
 	return (1);
 }
