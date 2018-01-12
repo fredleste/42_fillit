@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 08:31:38 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/12 13:10:34 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/12 13:38:03 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,17 @@ void 	set_tetra_grid(char **grid, t_piece *piece, char c)
 	int		i;
 	int		t;
 	
-	max = (piece->tetra->h - 1) * 4 + piece->tetra->w;
-	i = GRID_MAX - 1;
+	max = (piece->tetra->h - 1) * 4 + piece->tetra->w; 
+	i = 0;
 	t = 4;
-	while (i > 0 && i > max && t)
+	while (i < max && t)
 	{
-		if (piece->tetra->n & (1u << i))
+		if (piece->tetra->n & (1u << (15 - i)))
 		{
-			grid[piece->l + (GRID_MAX - 1 - i) % 4][piece->c + (GRID_MAX -1 - i) / 4] = c;
+			grid[piece->l + i % 4][piece->c + i / 4] = c;
 			t--;
 		}
-		i--;
+		i++;
 	}
 }
 
