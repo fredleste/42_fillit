@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:51:32 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/12 14:58:04 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/12 15:08:38 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,7 +175,6 @@ int		solver(t_piece pieces[], int pieces_nb, t_list **p_bt)
 	unsigned char		grid_ko;
 	
 	grid_size = calc_grid_size(pieces_nb);
-	printf("grid_size init: %d\n", grid_size);
 	bt_size = 0;
 	while (bt_size != pieces_nb)
 	{
@@ -190,11 +189,14 @@ int		solver(t_piece pieces[], int pieces_nb, t_list **p_bt)
 					grid_ko = 1;
 			}
 			else
+			{
 				solver_add_piece_bt(pieces, p_bt, &bt_size);
+				bt_size++;
+			}
 			solver_write_grid(grid, grid_size);	
 		}
 		grid_size++;
-		bt_size = pieces_nb;
+		//bt_size = pieces_nb;
 	}
 	return (grid_size);
 }
