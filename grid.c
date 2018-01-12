@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 08:31:38 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/12 13:38:03 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/12 14:55:16 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,9 @@ void 	set_tetra_grid(char **grid, t_piece *piece, char c)
 	}
 }
 
-int 	fill_grid(char **grid, int grid_size, int pieces_nb, t_list *bt)
+int 	fill_grid(char **grid, int pieces_nb, t_list *bt)
 {
 	t_list	*tmp;
-	t_piece	*piece;
 	char	alphabet[27];
 	int		t;
 

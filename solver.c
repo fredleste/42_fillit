@@ -6,18 +6,13 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:51:32 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/12 12:14:47 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/12 14:58:04 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 #include "solver.h"
 #include "mock.h"
-
-int		test_piece(t_piece *piece, int *pieces_nb)
-{
-	return (1);
-}
 
 int		solver_add_piece_bt(t_piece *piece, t_list **p_bt, unsigned char *bt_size)
 {
@@ -37,9 +32,73 @@ int		solver_add_piece_bt(t_piece *piece, t_list **p_bt, unsigned char *bt_size)
 	return (1);
 }
 
-int		solver_add_piece_grid(t_piece *piece, unsigned short int grid[], unsigned char grid_size)
+int		test_piece_grid(t_piece *piece, unsigned short int grid[])
 {
+	int		max;
+	int		i;
+	int		t;
+	int		ok;
 	
+	max = (piece->tetra->h - 1) * 4
+		+ piece->tetra->w; 
+	i = 0;
+	t = 4;
+	ok = 0;
+	while (i < max && t && ok != 4)
+	{
+		if (piece->tetra->n & (1u << (15 - i)))
+		{
+			t--;
+			if (grid[piece->l + i % 4 - 1]
+				& (1u << (15 - piece->c - i)))
+				ok++;
+		}
+		if ((i % 4) == piece->tetra->w % 4)
+			i += 4 - piece->tetra->w;
+		else
+			i++;
+	}
+	return (ok == 4 ? 1 : 0);
+}
+
+int		get_next_position(t_piece *pieces, unsigned char *p_bt_size,
+	unsigned char grid_size)
+{
+	t_piece *piece;
+	
+	piece = pieces + *p_bt_size;
+	if (piece->l == -1)
+	{
+		piece->l = 0;
+		piece->c = 0;
+	}
+	else
+	{
+		if (!(piece->c + 1 + piece->tetra->w) % grid_size)
+		{
+			if ((piece->l + 1 + piece->tetra->h) > grid_size)
+			{
+				return (0);
+			}
+			piece->c = 0;
+			piece->l++;
+		}
+		else
+			piece->c++;
+	}
+	return (1);
+}
+
+int		solver_add_piece_grid(t_piece *pieces, unsigned char *p_bt_size,
+	unsigned short int grid[], unsigned char grid_size)
+{
+	t_piece *piece;
+	
+	piece = pieces + *p_bt_size;
+	if (!get_next_position(pieces, p_bt_size, grid_size))
+		return (0);
+	if (!test_piece_grid(&pieces[*p_bt_size], grid))
+		return (solver_add_piece_grid(pieces, p_bt_size, grid, grid_size));
 	return (1);
 }
 
@@ -114,7 +173,6 @@ int		solver(t_piece pieces[], int pieces_nb, t_list **p_bt)
 	unsigned short int	grid[GRID_MAX];
 	unsigned char		bt_size;
 	unsigned char		grid_ko;
-	unsigned char		i;
 	
 	grid_size = calc_grid_size(pieces_nb);
 	printf("grid_size init: %d\n", grid_size);
@@ -126,13 +184,13 @@ int		solver(t_piece pieces[], int pieces_nb, t_list **p_bt)
 		solver_write_grid(grid, grid_size);
 		while (bt_size != pieces_nb)
 		{
-			if (solver_add_piece_grid(&pieces[bt_size], grid, grid_size) == -1)
+			if (solver_add_piece_grid(pieces, &bt_size, grid, grid_size) == -1)
 			{
 				if (!solver_move_piece(pieces, &bt_size, grid, grid_size))
 					grid_ko = 1;
 			}
 			else
-				solver_add_piece_bt(&pieces[bt_size], p_bt, &bt_size);
+				solver_add_piece_bt(pieces, p_bt, &bt_size);
 			solver_write_grid(grid, grid_size);	
 		}
 		grid_size++;
