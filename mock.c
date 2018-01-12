@@ -6,13 +6,15 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 19:52:43 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/11 17:37:21 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/11 19:45:19 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "main.h"
 #include "mock.h"
+#include "output.h"
+
 
 void	init_tetras_lib_mock(t_tetra tetras_lib[])
 {

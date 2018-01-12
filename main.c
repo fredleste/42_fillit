@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:02:11 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/11 19:26:08 by fleste-l         ###   ########.fr       */
+/*   Updated: 2018/01/12 10:28:53 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		main(int argc, char *argv[])
 	if (pieces_nb == -1)
 		return (put_error(1));
 	bt = NULL;
-	grid_size = solver(pieces, pieces_nb, bt);
+	grid_size = solver(pieces, pieces_nb, &bt);
 	if (grid_size == -1)
 		return (put_error(1));
 	return (put_grid(bt, pieces_nb, grid_size));
