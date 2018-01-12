@@ -6,13 +6,14 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:02:11 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/12 09:40:06 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/12 12:26:30 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 #include "mock.h"
 #include "test.h"
+#include "solver.h"
 #include "output.h"
 
 int		main(int argc, char *argv[])
@@ -36,7 +37,7 @@ int		main(int argc, char *argv[])
 	printf("nb_pieces : %d\n", pieces_nb);
 	put_error_log("-------------------------------\n------------------ SOLVER\n\n");
 	bt = NULL;
-	grid_size = solver(pieces, pieces_nb, &bt);
+	grid_size = solver_mock(pieces, pieces_nb, &bt);
 	if (grid_size == -1)
 		return (put_error(1));
 	put_error_log("-------------------------------\n------------------ PUT GRID\n\n");

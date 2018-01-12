@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 19:52:43 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/11 19:45:19 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/12 12:19:03 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	init_tetras_lib_mock(t_tetra tetras_lib[])
 int		test_source_mock(char *file_name, t_tetra tetras_lib[],
 	t_piece pieces[])
 {
-	int		i;
+	char	i;
 
 	i = 0;
 	while (i < MOCK_PIECES_NB)
