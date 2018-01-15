@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 19:52:43 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/12 14:52:43 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/15 18:43:01 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,14 @@ void	init_tetras_lib_mock(t_tetra tetras_lib[])
 	tetras_lib[1].n = TETRA_N_18;
 	tetras_lib[1].h = TETRA_H_18;
 	tetras_lib[1].w = TETRA_W_18;
+	tetras_lib[2].n = TETRA_N_0;
+	tetras_lib[2].h = TETRA_H_0;
+	tetras_lib[2].w = TETRA_W_0;
+}
+
+int		test_params_mock(int argc)
+{
+	return (1);
 }
 
 int		test_source_mock(char *file_name, t_tetra tetras_lib[],
@@ -38,6 +46,8 @@ int		test_source_mock(char *file_name, t_tetra tetras_lib[],
 		pieces[i].tetra = &(tetras_lib[i]);
 		pieces[i].l = -1;
 		pieces[i].c = -1;
+		pieces[i].first = -1;
+		pieces[i].last = -1;
 		i++;
 	}
 	return (MOCK_PIECES_NB);

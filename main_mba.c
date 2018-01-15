@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:02:11 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/12 14:58:34 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/15 10:18:02 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		main(int argc, char *argv[])
 	int				grid_size;
 	
 	put_error_log("-------------------------------\n------------------ INIALISATION\n\n");
-	if (!test_params(argc))
+	if (!test_params_mock(argc))
 		return (put_error(0));
 	put_error_log("-------------------------------\n------------------ INIT TETRAS\n\n");
 	init_tetras_lib_mock(tetras_lib);
