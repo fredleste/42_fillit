@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:51:32 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/16 16:36:57 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/16 17:07:55 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,7 +226,7 @@ unsigned char	calc_grid_size(int pieces_nb)
 	
 	if (!pieces_nb)
 		return (-1);
-	i = 4;
+	i = 3;
 	while (i * i < 4 * pieces_nb)
 		i++;
 	return (i);
