@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 19:55:36 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/15 18:43:20 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/16 15:26:31 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define MOCK_TETRA_H_1 4
 # define MOCK_TETRA_W_1 1
 # define MOCK_TETRAS_NB 2
-# define MOCK_PIECES_NB 3
+# define MOCK_PIECES_NB 7
 # define MOCK_GRID_SIZE MOCK_PIECES_NB * 4
 
 void 	init_tetras_lib_mock(t_tetra tetras_lib[]);

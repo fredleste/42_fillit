@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:51:32 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/15 19:43:19 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/16 15:24:35 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,15 @@ int		test_piece_grid(t_piece *piece, char l, char c, unsigned short int grid[])
 	int		i;
 	int		t;
 	int		ok;
+	int		ko;
 	
 	max = (piece->tetra->h - 1) * 4 + piece->tetra->w;
 	printf("-- test_piece_grid n:%d h:%d w:%d l:%d c:%d\n", piece->tetra->n, piece->tetra->h, piece->tetra->w, l, c);
 	i = 0;
 	t = 4;
 	ok = 0;
-	while (i < max + 1 && t)
+	ko = 0;
+	while (i < max && t && !ko)
 	{
 		if (piece->tetra->n & (1u << (15 - i)))
 		{
@@ -65,7 +67,9 @@ int		test_piece_grid(t_piece *piece, char l, char c, unsigned short int grid[])
 			if (!(grid[l + i / 4]
 				& (1u << (15 - c - i % 4))))
 				ok++;
-			printf("i:%d ok:%d l+im4:%d dec:%d\n", i, ok, l + i / 4, 15 - c - i % 4);
+			else
+				ko = 1;
+			printf("i:%d ok:%d ko: %d l+im4:%d dec:%d\n", i, ok, ko, l + i / 4, 15 - c - i % 4);
 		}
 		i++;
 	}
@@ -149,8 +153,8 @@ int		get_next_position(t_piece *piece, unsigned short int grid[],
 	}
 	else
 	{
-		printf("mod (piece->c + 1 + piece->tetra->w):%d grid_size:%d (piece->c + 1 + piece->tetra->w) mod grid_size):%d\n", piece->c + 1 + piece->tetra->w, grid_size, (piece->c + 1 + piece->tetra->w) % grid_size);
-		if (!((piece->c + 1 + piece->tetra->w) % grid_size))
+		printf("!(piece->l | piece->c): %d mod (piece->c + 1 + piece->tetra->w):%d grid_size:%d (piece->c + 1 + piece->tetra->w) mod grid_size):%d\n", !(piece->l | piece->c), piece->c + 1 + piece->tetra->w, grid_size, (piece->c + 1 + piece->tetra->w) % grid_size);
+		if (!((piece->c + piece->tetra->w) % grid_size))
 		{
 			l = piece->l + 1;
 			c = 0;
@@ -219,15 +223,13 @@ int		solver_add_piece_grid(t_piece *pieces, unsigned char *p_bt_size,
 unsigned char	calc_grid_size(int pieces_nb)
 {
 	unsigned char		i;
-	unsigned char		l;
 	
 	if (!pieces_nb)
 		return (-1);
-	i = 2;
-	while (i * i <= pieces_nb)
+	i = 4;
+	while (i * i < 4 * pieces_nb)
 		i++;
-	l = 2 * i - 1;
-	return (4 * pieces_nb < l * l ? l + 1 : l);
+	return (i);
 }
 
 int 	solver_write_grid(unsigned short int grid[], unsigned char grid_size)
@@ -288,7 +290,7 @@ int		solver(t_piece pieces[], int pieces_nb, t_list **p_bt)
 	grid_size = calc_grid_size(pieces_nb);
 	printf("grid_size : %d\n", grid_size);
 	bt_size = 0;
-	while (bt_size != pieces_nb)
+	while (bt_size < pieces_nb)
 	{
 		grid_ko = 0;
 		solver_init(grid, grid_size, p_bt, &bt_size);
@@ -301,7 +303,7 @@ int		solver(t_piece pieces[], int pieces_nb, t_list **p_bt)
 			printf("PROGRESS GRID -> !grid_ko: %d bt_size:%d / pieces_nb:%d ==> %d\n", !grid_ko , bt_size, pieces_nb, bt_size == pieces_nb );
 			solver_write_grid(grid, grid_size);
 		}
-		if (bt_size != pieces_nb)
+		if (bt_size < pieces_nb)
 			grid_size++;
 		//bt_size = pieces_nb;
 	}

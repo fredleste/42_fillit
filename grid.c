@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 08:31:38 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/12 14:55:16 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/16 13:48:49 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int		write_grid(char **grid, int grid_size)
 {
 	int		l;
 	int		c;
-
+	
 	l = 0;
 	while (l < grid_size)
 	{
