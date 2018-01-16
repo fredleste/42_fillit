@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:02:11 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/16 17:20:48 by fleste-l         ###   ########.fr       */
+/*   Updated: 2018/01/16 18:21:51 by fleste-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int		main(int argc, char *argv[])
 	t_piece			pieces[PIECES_NB_MAX];
 	int				pieces_nb;
 	int				i;
-	unsigned short	n;
 //	t_list			*bt;
 //	int				grid_size;
 
@@ -38,7 +37,8 @@ int		main(int argc, char *argv[])
 	i = 0;
 	while (i < pieces_nb)
 	{
-		printf("%d\n, pieces[i].tetra");
+		printf("%x\n", pieces[i].tetra->n);
+		i++;
 	}
 //	bt = NULL;
 //	grid_size = solver(pieces, pieces_nb, &bt);
