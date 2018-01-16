@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 13:01:42 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/12 14:54:32 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/16 16:40:17 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,23 @@ int		put_error_log(const char *str)
 	return (1);
 }
 
-int		put_grid(t_list *bt, int pieces_nb, int grid_size)
+int		put_grid(t_piece *pieces, int pieces_nb, int grid_size)
 {
 	char	**grid;
 
 	if (!pieces_nb || !grid_size)
 		return (put_error(1));
 	grid = NULL;
-	put_error_log("---------------------\n------------------ INIT GRID\n\n");
+	//put_error_log("---------------------\n------------------ INIT GRID\n\n");
 	if (!(grid = init_grid(grid_size)))
 		return (put_error_log("Malloc error : init_grid"));
-		put_error_log("---------------------\n------------------ FILL GRID\n\n");
-	if (!fill_grid(grid, pieces_nb, bt))
+		//put_error_log("---------------------\n------------------ FILL GRID\n\n");
+	if (!fill_grid(grid, pieces, pieces_nb))
 		return (put_error_log("Error in fill_grid"));
-		put_error_log("---------------------\n------------------ WRITE GRID\n\n");
+		//put_error_log("---------------------\n------------------ WRITE GRID\n\n");
 	if (!write_grid(grid, grid_size))
 		return (put_error_log("Error in write_grid"));
-		put_error_log("---------------------\n------------------ DEL GRID\n\n");
+		//put_error_log("---------------------\n------------------ DEL GRID\n\n");
 	if (!del_grid(grid, grid_size))
 		return (put_error_log("Error in del_grid"));
 	return (1);

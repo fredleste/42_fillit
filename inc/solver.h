@@ -6,7 +6,7 @@
 /*   By: fleste-l <fleste-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 18:56:40 by fleste-l          #+#    #+#             */
-/*   Updated: 2018/01/15 19:36:19 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/16 16:18:51 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ int 	solver_write_grid(unsigned short int grid[],
 	unsigned char grid_size);
 void	solver_pieces_init(t_piece *pieces,  int pieces_nb);
 int		solver_init(unsigned short int grid[], unsigned char grid_size,
-		t_list **p_bt, unsigned char *bt_size);
-int		solver(t_piece *pieces, int pieces_nb, t_list **bt);
+	unsigned char *bt_size);
+int		solver(t_piece *pieces, int pieces_nb);
 #endif

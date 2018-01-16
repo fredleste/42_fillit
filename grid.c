@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 08:31:38 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/16 13:48:49 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/16 16:38:50 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,35 +48,37 @@ void 	set_tetra_grid(char **grid, t_piece *piece, char c)
 	int		max;
 	int		i;
 	int		t;
-	
+
 	max = (piece->tetra->h - 1) * 4 + piece->tetra->w; 
 	i = 0;
 	t = 4;
+	//printf("-- set_tetra_grid tetra:%d max:%d piece->l:%d piece->c:%d\n", piece->tetra->n, max, piece->l, piece->c);
 	while (i < max && t)
 	{
 		if (piece->tetra->n & (1u << (15 - i)))
 		{
-			grid[piece->l + i % 4][piece->c + i / 4] = c;
+			//printf("tetra:%d i:%d (piece->l + i m 4):%d (piece->c + i / 4):%d\n", piece->tetra->n, i, piece->l + i % 4, piece->c + i / 4);
+			grid[piece->l + i / 4][piece->c + i % 4] = c;
 			t--;
 		}
 		i++;
 	}
 }
 
-int 	fill_grid(char **grid, int pieces_nb, t_list *bt)
+int 	fill_grid(char **grid, t_piece *pieces, int pieces_nb)
 {
-	t_list	*tmp;
-	char	alphabet[27];
-	int		t;
-
-	strcpy(alphabet, ALPHABET);
-	tmp = bt;
-	t = pieces_nb - 1;
-	while (tmp)
+	int		i;
+	char	c;
+	
+	i = 0;
+	c = 'A';
+	//printf("-- set_grid grid_size: %d pieces_nb:%d\n", grid_size, pieces_nb);
+	while (i < pieces_nb)
 	{
-		set_tetra_grid(grid, (t_piece *)tmp->content, alphabet[t]);
-		t--;
-		tmp = tmp->next;
+		//printf("grid_size: %d pieces_nb:%d i:%d\n", grid_size, pieces_nb, i);
+		set_tetra_grid(grid, &pieces[i], c);
+		i++;
+		c++;
 	}
 	return (1);
 }
