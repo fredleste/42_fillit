@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:02:11 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/16 16:16:30 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/16 16:45:02 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int		main(int argc, char *argv[])
 	t_tetra			tetras_lib[TETRAS_LIB_NB];
 	t_piece			pieces[PIECES_NB_MAX];
 	int				pieces_nb;
-	t_list			*bt;
 	int				grid_size;
 
 	if (!test_params(argc))
@@ -30,9 +29,8 @@ int		main(int argc, char *argv[])
 	pieces_nb = test_source(argv[1], tetras_lib, pieces);
 	if (pieces_nb == -1)
 		return (put_error(1));
-	bt = NULL;
-	grid_size = solver(pieces, pieces_nb, &bt);
+	grid_size = solver(pieces, pieces_nb);
 	if (grid_size == -1)
 		return (put_error(1));
-	return (put_grid(bt, pieces_nb, grid_size));
+	return (put_grid(pieces, pieces_nb, grid_size));
 }
