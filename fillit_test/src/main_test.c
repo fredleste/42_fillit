@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/17 09:00:49 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/17 12:02:16 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/17 13:22:35 by fleste-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		main(int argc, char *argv[])
 	t_piece	pieces[PIECES_NB_MAX];
 	int		pieces_nb;
 	int		grid_size;
-	
+
 	/*
 	//put_error_log("-------------------------------\n------------------ INIALISATION\n\n");
 	if (!test_params_mock(argc))
@@ -59,15 +59,15 @@ int		main(int argc, char *argv[])
 	//put_error_log("-------------------------------\n------------------ PUT GRID\n\n");
 	return	(put_grid(pieces, pieces_nb, grid_size));
 	*/
-	
+
 	if (argc != 1 && argc != 3 && argc != 5)
-		return(test_put_error(0));
+		return (test_put_error(0));
 	ft_strcpy(file_output_test, FILLIT_TEST_OUTPUT_FILE);
 	ft_strcpy(description, FILLIT_TEST_DESCRIPTION);
 	if (argc == 3 || argc == 5)
 	{
-		if ((!ft_strcmp(argv[1], "-f") && !ft_strcmp(argv[1], "-d")) || (argc == 5 && !ft_strcmp(argv[1], argv[3])))
-			return(test_put_error(0));
+		if ((!ft_strcmp(argv[1], "-f") || !ft_strcmp(argv[1], "-d")) || (argc == 5 && !ft_strcmp(argv[1], argv[3]) && (!ft_strcmp(argv[3], "-f") || !ft_strcmp(argv[3], "-d"))))
+			return (test_put_error(0));
 		if (!ft_strcmp(argv[1], "-f"))
 			ft_strcpy(file_output_test, argv[2]);
 		else if (!ft_strcmp(argv[1], "-d"))
@@ -112,7 +112,7 @@ int		main(int argc, char *argv[])
 	* ----------------------------------------------------------- OUTPUT IN FILE
 	**/
 	if (!(fd = fopen(file_output_test, "a")))
-		return(test_put_error(0));
+		return (test_put_error(0));
 	fprintf(fd, "\n\n%s\n", description);
 	fprintf(fd, "|%40s|%20s|%20s|%20s|%20s|%20s|\n", "File", "Result", "Test duration", "Solver duration", "Output duration", "Total duration");
 	// Line
@@ -145,6 +145,6 @@ int		main(int argc, char *argv[])
 		// Line end
 	}
 	if (fclose(fd))
-		return(test_put_error(0));
+		return (test_put_error(0));
 	return(0);
 }

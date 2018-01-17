@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:51:32 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/16 17:07:55 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/17 14:10:08 by fleste-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		solver_add_piece_bt(t_piece *piece, t_list **p_bt, unsigned char *bt_size)
 {
 	t_list	*new;
 	t_list	*bt;
-	
+
 	bt = NULL;
 	new = ft_mba_lstnew((void const *)piece, sizeof(void *));
 	if (!new)
@@ -36,13 +36,7 @@ int		solver_add_piece_bt(t_piece *piece, t_list **p_bt, unsigned char *bt_size)
 
 void	solver_pieces_init(t_piece *pieces,  int pieces_nb)
 {
-	while (pieces_nb--)
-	{
-		pieces[pieces_nb - 1].l = -1;
-		pieces[pieces_nb - 1].c = -1;
-		pieces[pieces_nb - 1].first = -1;
-		pieces[pieces_nb - 1].last = -1;
-	}
+
 }
 
 int		test_piece_grid(t_piece *piece, char l, char c, unsigned short int grid[])
@@ -52,7 +46,7 @@ int		test_piece_grid(t_piece *piece, char l, char c, unsigned short int grid[])
 	int		t;
 	int		ok;
 	int		ko;
-	
+
 	max = (piece->tetra->h - 1) * 4 + piece->tetra->w;
 	//printf("-- test_piece_grid n:%d h:%d w:%d l:%d c:%d\n", piece->tetra->n, piece->tetra->h, piece->tetra->w, l, c);
 	i = 0;
@@ -84,9 +78,9 @@ int		place_piece_grid(t_piece *piece, unsigned short int grid[])
 	int		max;
 	int		i;
 	int		t;
-	
+
 	//printf("-- place_piece_grid n:%d l:%d c:%d\n", piece->tetra->n, piece->l, piece->c);
-	max = (piece->tetra->h - 1) * 4 + piece->tetra->w; 
+	max = (piece->tetra->h - 1) * 4 + piece->tetra->w;
 	i = 0;
 	t = 4;
 	while (i < max && t)
@@ -108,7 +102,7 @@ int		get_last_position(t_piece *piece, unsigned short int grid[],
 {
 	char	l;
 	char	c;
-	
+
 	//printf("\n-- get_last_position %d\n", piece->tetra->n);
 	l = grid_size - piece->tetra->h;
 	c = grid_size - piece->tetra->w;
@@ -142,7 +136,7 @@ int		get_next_position(t_piece *piece, unsigned short int grid[],
 {
 	char	l;
 	char	c;
-	
+
 	//printf("\n-- get_next_position %d\n", piece->tetra->n);
 	if (piece->l == -1)
 	{
@@ -162,7 +156,7 @@ int		get_next_position(t_piece *piece, unsigned short int grid[],
 		else
 		{
 			l = piece->l;
-			c = piece->c + 1;			
+			c = piece->c + 1;
 		}
 	}
 	//printf("et1 l:%d piece->l:%d c:%d piece->c:%d\n", l, piece->l, c, piece->c);
@@ -189,7 +183,7 @@ int		solver_add_piece_grid(t_piece *pieces, unsigned char *p_bt_size,
 {
 	t_piece 			*piece;
 	int					next;
-	
+
 	//printf("solver_add_piece_grid %d\n", *p_bt_size);
 	piece = pieces + *p_bt_size;
 	piece->last = get_last_position(&pieces[*p_bt_size], grid, grid_size);
@@ -209,7 +203,7 @@ int		solver_add_piece_grid(t_piece *pieces, unsigned char *p_bt_size,
 		pieces[*p_bt_size].last = -1;
 		if (!(*p_bt_size))
 			return (1);
-		(*p_bt_size)--;	
+		(*p_bt_size)--;
 	}
 	else
 	{
@@ -223,10 +217,10 @@ int		solver_add_piece_grid(t_piece *pieces, unsigned char *p_bt_size,
 unsigned char	calc_grid_size(int pieces_nb)
 {
 	unsigned char		i;
-	
+
 	if (!pieces_nb)
 		return (-1);
-	i = 3;
+	i = 2;
 	while (i * i < 4 * pieces_nb)
 		i++;
 	return (i);
@@ -236,7 +230,7 @@ int 	solver_write_grid(unsigned short int grid[], unsigned char grid_size)
 {
 	unsigned char		i;
 	unsigned char		j;
-	
+
 	//printf("---*---*---*---* %d\n", grid_size);
 	ft_putstr("---*---*---*---* ");
 	ft_putnbr(grid_size);
@@ -258,11 +252,11 @@ int 	solver_write_grid(unsigned short int grid[], unsigned char grid_size)
 }
 
 int		solver_init(unsigned short int grid[], unsigned char grid_size,
-	unsigned char *bt_size)
+	t_piece *pieces, unsigned char *p_bt_size)
 {
 	unsigned char		i;
 	unsigned char		j;
-	
+
 	//printf("------ solver_init i:\n");
 	i = 0;
 	while (i < GRID_MAX)
@@ -279,7 +273,15 @@ int		solver_init(unsigned short int grid[], unsigned char grid_size,
 		}
 		i++;
 	}
-	*bt_size = 0;
+	i = *p_bt_size;
+	while (i--)
+	{
+		pieces[i - 1].l = -1;
+		pieces[i - 1].c = -1;
+		pieces[i - 1].first = -1;
+		pieces[i - 1].last = -1;
+	}
+	*p_bt_size = 0;
 	return (1);
 }
 
@@ -289,15 +291,15 @@ int		solver(t_piece pieces[], int pieces_nb)
 	unsigned short int	grid[GRID_MAX];
 	unsigned char		bt_size;
 	unsigned char		grid_ko;
-	
+
 	grid_size = calc_grid_size(pieces_nb);
 	//printf("grid_size : %d\n", grid_size);
 	bt_size = 0;
 	while (bt_size < pieces_nb)
 	{
 		grid_ko = 0;
-		solver_init(grid, grid_size, &bt_size);
-		solver_pieces_init(pieces, pieces_nb);
+		solver_init(grid, grid_size, pieces, &bt_size);
+		//solver_pieces_init(pieces, pieces_nb);
 		//printf("INITIAL GRID\n");
 		solver_write_grid(grid, grid_size);
 		while (!grid_ko && bt_size != pieces_nb)
