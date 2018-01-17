@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 11:36:44 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/16 18:53:14 by fleste-l         ###   ########.fr       */
+/*   Updated: 2018/01/17 20:24:52 by fleste-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,26 @@ void	init_tetras_lib_w(t_tetra tetras_lib[])
 	tetras_lib[18].w = TETRA_W_18;
 }
 
+void	init_tetras_lib_max(t_tetra tetras_lib[])
+{
+	int		i;
+	int		x;
+
+	i = 0;
+	while (i < TETRAS_LIB_NB)
+	{
+		x = 0;
+		while (!((tetras_lib[i].n >> x) & 1u))
+			x++;
+		tetras_lib[i].max = 16 - x;
+		i++;
+	}
+}
+
 void	init_tetras_lib(t_tetra tetras_lib[])
 {
 	init_tetras_lib_n(tetras_lib);
 	init_tetras_lib_h(tetras_lib);
 	init_tetras_lib_w(tetras_lib);
+	init_tetras_lib_max(tetras_lib);
 }
