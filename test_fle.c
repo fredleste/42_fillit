@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   test_fle.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 11:39:33 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/17 12:32:50 by fleste-l         ###   ########.fr       */
+/*   Updated: 2018/01/16 19:05:30 by fleste-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,22 @@ int		put_file(char *file_name, char *str_pieces)
 
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
+	{
+		put_error_log("Error open file\n");
 		return (-1);
+	}
 	n = read(fd, buf, BUF_SIZE);
 	buf[n] = '\0';
 	if (close(fd) == -1)
+	{
+		put_error_log("Error close file\n");
 		return (-1);
+	}
 	if ((n + 1) % 21 != 0)
+	{
+		put_error_log("Error wrong file\n");
 		return (-1);
+	}
 	i = 0;
 	j = 0;
 	while (i < n)
@@ -44,7 +53,10 @@ int		put_file(char *file_name, char *str_pieces)
 		if ((i + 1 - (i / 21)) % 5 == 0 || (i + 1) % 21 == 0)
 		{
 			if (buf[i] != '\n')
+			{
+				put_error_log("Error wrong file format\n");
 				return (-1);
+			}
 		}
 		else
 			str_pieces[j++] = buf[i];
@@ -102,7 +114,10 @@ int		test_source(char *file_name, t_tetra tetras_lib[], t_piece pieces[])
 		str[i] = '\0';
 		pieces[n].tetra = put_binary(str, tetras_lib);
 		if (pieces[n].tetra == NULL)
+		{
+			put_error_log("Error wrong piece\n");
 			return (-1);
+		}
 		pieces[n].l = -1;
 		pieces[n].c = -1;
 		n++;
