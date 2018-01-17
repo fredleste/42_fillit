@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 11:29:18 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/17 14:41:36 by fleste-l         ###   ########.fr       */
+/*   Updated: 2018/01/17 16:57:45 by fleste-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ typedef struct	s_tetra
 	unsigned short int	n;
 	unsigned char		w;
 	unsigned char		h;
-	unsigned char		max;
+//	unsigned char		max;
 }				t_tetra;
 void 	init_tetras_lib	(t_tetra tetras_lib[]);
 #endif

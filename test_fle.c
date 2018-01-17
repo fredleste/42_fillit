@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 11:39:33 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/16 19:05:30 by fleste-l         ###   ########.fr       */
+/*   Updated: 2018/01/17 18:06:50 by fleste-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,22 @@ int		test_params(int argc)
 	return (argc != 2 ? 0 : 1);
 }
 
-int		put_file(char *file_name, char *str_pieces)
+int		put_file(char *file_name , char *str_pieces)
 {
-	int		fd;
 	int		n;
 	int		i;
 	int		j;
 	char	buf[BUF_SIZE + 1];
 
-	fd = open(file_name, O_RDONLY);
-	if (fd == -1)
+	i = open(file_name, O_RDONLY);
+	if (i == -1)
 	{
 		put_error_log("Error open file\n");
 		return (-1);
 	}
-	n = read(fd, buf, BUF_SIZE);
+	n = read(i, buf, BUF_SIZE);
 	buf[n] = '\0';
-	if (close(fd) == -1)
+	if (close(i) == -1)
 	{
 		put_error_log("Error close file\n");
 		return (-1);
@@ -46,21 +45,17 @@ int		put_file(char *file_name, char *str_pieces)
 		put_error_log("Error wrong file\n");
 		return (-1);
 	}
-	i = 0;
+	i = -1;
 	j = 0;
-	while (i < n)
+	while (++i < n)
 	{
-		if ((i + 1 - (i / 21)) % 5 == 0 || (i + 1) % 21 == 0)
+		if (((i + 1 - i / 21) % 5 == 0 || (i + 1) % 21 == 0) && buf[i] != '\n')
 		{
-			if (buf[i] != '\n')
-			{
-				put_error_log("Error wrong file format\n");
-				return (-1);
-			}
+			put_error_log("Error wrong file format\n");
+			return (-1);
 		}
-		else
+		if (buf[i] != '\n')
 			str_pieces[j++] = buf[i];
-		i++;
 	}
 	str_pieces[j] = '\0';
 	return ((n + 1) / 21);

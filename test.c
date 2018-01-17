@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 11:39:33 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/17 12:32:50 by fleste-l         ###   ########.fr       */
+/*   Updated: 2018/01/17 17:32:50 by fleste-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,17 @@ int		test_params(int argc)
 
 int		put_file(char *file_name, char *str_pieces)
 {
-	int		fd;
 	int		n;
 	int		i;
 	int		j;
 	char	buf[BUF_SIZE + 1];
 
-	fd = open(file_name, O_RDONLY);
-	if (fd == -1)
+	i = open(file_name, O_RDONLY);
+	if (i == -1)
 		return (-1);
-	n = read(fd, buf, BUF_SIZE);
+	n = read(i, buf, BUF_SIZE);
 	buf[n] = '\0';
-	if (close(fd) == -1)
+	if (close(i) == -1)
 		return (-1);
 	if ((n + 1) % 21 != 0)
 		return (-1);
@@ -41,7 +40,7 @@ int		put_file(char *file_name, char *str_pieces)
 	j = 0;
 	while (i < n)
 	{
-		if ((i + 1 - (i / 21)) % 5 == 0 || (i + 1) % 21 == 0)
+		if ((i + 1 - i / 21) % 5 == 0 || (i + 1) % 21 == 0)
 		{
 			if (buf[i] != '\n')
 				return (-1);
