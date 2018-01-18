@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 19:52:43 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/18 14:47:21 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/18 19:10:44 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		test_source_mock(char *file_name, int tetras_lib[],
 	int		i;
 
 	i = 0;
-	while (i++ < MOCK_TETRAS_NB)
+	while (i < MOCK_TETRAS_NB)
 	{
 		pieces[i].n = tetras_lib[i];
 		pieces[i].l = -1;
@@ -49,6 +49,7 @@ int		test_source_mock(char *file_name, int tetras_lib[],
 		pieces[i].last = -1;
 		pieces[i].pos = -1;
 		pieces[i].prev = -1;
+		i++;
 	}
 	pieces[0].h = 1;
 	pieces[0].w = 4;
@@ -69,10 +70,10 @@ int		test_source_mock(char *file_name, int tetras_lib[],
 	pieces[3].last = -1;
 	pieces[3].pos = -1;
 	pieces[3].prev = 0;
-	pieces[3].h = pieces[3].h;
-	pieces[3].w = pieces[3].w;
-	pieces[3].max = pieces[3].max;
-	pieces[3].min = pieces[3].min;
+	pieces[3].h = pieces[0].h;
+	pieces[3].w = pieces[0].w;
+	pieces[3].max = pieces[0].max;
+	pieces[3].min = pieces[0].min;
 	return (MOCK_PIECES_NB);
 }
 

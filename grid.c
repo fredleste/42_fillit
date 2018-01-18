@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 08:31:38 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/18 14:19:31 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/18 19:17:29 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,25 +43,29 @@ char	**init_grid(int grid_size)
 	return (grid);
 }
 
-void	set_tetra_grid(char **grid, t_piece *piece, char c)
+void	set_tetra_grid(char **grid, t_piece *piece, char letter)
 {
-	int		max;
 	int		i;
-	int		t;
-
-	max = (piece->tetra->h - 1) * 4 + piece->tetra->w;
-	i = 0;
-	t = 4;
-	//printf("-- set_tetra_grid tetra:%d max:%d piece->l:%d piece->c:%d\n", piece->tetra->n, max, piece->l, piece->c);
-	while (i < max && t)
+	int		l;
+	int		c;
+	
+	i = piece->max;
+	l = piece->l;
+	c = 15 + piece->c;
+	printf("-- set_tetra_grid tetra:%d max:%d min:%d piece->l:%d piece->c:%d\n", piece->n, piece->max, piece->min, piece->l, piece->c);
+	while (i > piece->min)
 	{
-		if (piece->tetra->n & (1u << (15 - i)))
+		if (piece->n & (1 << i))
 		{
-			//printf("tetra:%d i:%d (piece->l + i m 4):%d (piece->c + i / 4):%d\n", piece->tetra->n, i, piece->l + i % 4, piece->c + i / 4);
-			grid[piece->l + i / 4][piece->c + i % 4] = c;
-			t--;
+			printf("tetra:%d i:%d (l):%d (c - i):%d\n", piece->n, i, l, c - i);
+			grid[l][c - i] = letter;
 		}
-		i++;
+		if (!(i % 4))
+		{
+			l++;
+			c -= 4;
+		}
+		i--;
 	}
 }
 
