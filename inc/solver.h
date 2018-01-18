@@ -6,7 +6,7 @@
 /*   By: fleste-l <fleste-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 18:56:40 by fleste-l          #+#    #+#             */
-/*   Updated: 2018/01/17 14:14:21 by fleste-l         ###   ########.fr       */
+/*   Updated: 2018/01/17 16:57:43 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 # define SOLVER_H
 # define GRID_ALL_ONE 0xFFFF
 
+void	solver_init_piece(t_piece *piece);
 int		test_piece_grid(t_piece *piece, char l, char c,
 	unsigned short int grid[]);
+int		place_piece_grid(t_piece *piece, unsigned short int grid[]);
+int		remove_piece_grid(t_piece *piece, unsigned short int grid[]);
 int		get_last_position(t_piece *piece, unsigned short int grid[],
 	unsigned char grid_size);
 int		get_next_position(t_piece *piece, unsigned short int grid[],
