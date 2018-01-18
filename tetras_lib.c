@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 11:36:44 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/18 12:53:58 by fleste-l         ###   ########.fr       */
+/*   Updated: 2018/01/18 13:24:04 by fleste-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ void	init_tetras_lib_max(t_tetra tetras_lib[])
 		while (!(tetras_lib[i].n & (1u << x)))
 			x++;
 		tetras_lib[i].max = 16 - x;
-		printf("max =%d\n", tetras_lib[i].max);
 		i++;
 	}
 }
