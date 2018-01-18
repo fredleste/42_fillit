@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:51:32 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/18 14:55:09 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/18 14:56:24 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,11 @@ int		test_piece_grid(t_piece *piece, int l, int c, int grid[])
 	ko = 0;
 	while (i < max && t && !ko)
 	{
-		if (piece->tetra->n & (1u << (15 - i)))
+		if (piece->tetra->n & (1 << (15 - i)))
 		{
 			t--;
 			if (!(grid[l + i / 4]
-				& (1u << (15 - c - i % 4))))
+				& (1 << (15 - c - i % 4))))
 				ok++;
 			else
 				ko = 1;
@@ -89,11 +89,11 @@ int		place_piece_grid(t_piece *piece, nt grid[])
 	while (i < max && t)
 	{
 		//printf("i:%d max:%d\n", i, max);
-		if (piece->tetra->n & (1u << (15 - i)))
+		if (piece->tetra->n & (1 << (15 - i)))
 		{
 			t--;
 			//printf("indice:%d rang:%d\n", piece->l + i / 4, 15 - piece->c - i);
-			grid[piece->l + i / 4] |= 1u << (15 - piece->c - i % 4);
+			grid[piece->l + i / 4] |= 1 << (15 - piece->c - i % 4);
 		}
 		i++;
 	}
@@ -113,11 +113,11 @@ int		remove_piece_grid(t_piece *piece, int grid[])
 	while (i < max && t)
 	{
 		//printf("i:%d max:%d\n", i, max);
-		if (piece->tetra->n & (1u << (15 - i)))
+		if (piece->tetra->n & (1 << (15 - i)))
 		{
 			t--;
 			//printf("indice:%d rang:%d\n", piece->l + i / 4, 15 - piece->c - i);
-			grid[piece->l + i / 4] &= ~(1u << (15 - piece->c - i % 4));
+			grid[piece->l + i / 4] &= ~(1 << (15 - piece->c - i % 4));
 		}
 		i++;
 	}
@@ -269,7 +269,7 @@ int		solver_write_grid(int grid[], int grid_size)
 		while (j > 16 - grid_size)
 		{
 			j--;
-			ft_putchar((grid[i] >> j) & 1u ? '#' : '.');
+			ft_putchar((grid[i] >> j) & 1 ? '#' : '.');
 		}
 		ft_putchar('\n');
 		i++;
