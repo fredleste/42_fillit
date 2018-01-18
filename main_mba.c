@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:02:11 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/16 16:41:13 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/18 14:20:16 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		main(int argc, char *argv[])
 	t_piece			pieces[PIECES_NB_MAX];
 	int				pieces_nb;
 	int				grid_size;
-	
+
 	//put_error_log("-------------------------------\n------------------ INIALISATION\n\n");
 	if (!test_params_mock(argc))
 		return (put_error(0));
@@ -38,5 +38,5 @@ int		main(int argc, char *argv[])
 	if (grid_size == -1)
 		return (put_error(1));
 	//put_error_log("-------------------------------\n------------------ PUT GRID\n\n");
-	return	(put_grid(pieces, pieces_nb, grid_size));
+	return (put_grid(pieces, pieces_nb, grid_size));
 }

@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 19:55:36 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/16 15:26:31 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/18 14:43:11 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 # define MOCK_TETRA_N_1 0x8888
 # define MOCK_TETRA_H_1 4
 # define MOCK_TETRA_W_1 1
-# define MOCK_TETRAS_NB 2
-# define MOCK_PIECES_NB 7
+# define MOCK_TETRAS_NB 3
+# define MOCK_PIECES_NB 4
 # define MOCK_GRID_SIZE MOCK_PIECES_NB * 4
 
-void 	init_tetras_lib_mock(t_tetra tetras_lib[]);
+void	init_tetras_lib_mock(t_tetra tetras_lib[]);
 int		test_params_mock(int argc);
 int		test_source_mock(char *file_name, t_tetra tetras_lib[],
 	t_piece pieces[]);

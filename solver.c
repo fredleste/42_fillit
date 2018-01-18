@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:51:32 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/18 10:11:57 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/18 14:55:09 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	solver_init_piece(t_piece *piece)
 	piece->last = -1;
 }
 
-int		test_piece_grid(t_piece *piece, char l, char c, unsigned short int grid[])
+int		test_piece_grid(t_piece *piece, int l, int c, int grid[])
 {
 	int		max;
 	int		i;
@@ -76,7 +76,7 @@ int		test_piece_grid(t_piece *piece, char l, char c, unsigned short int grid[])
 	return (1);
 }
 
-int		place_piece_grid(t_piece *piece, unsigned short int grid[])
+int		place_piece_grid(t_piece *piece, nt grid[])
 {
 	int		max;
 	int		i;
@@ -100,7 +100,7 @@ int		place_piece_grid(t_piece *piece, unsigned short int grid[])
 	return (1);
 }
 
-int		remove_piece_grid(t_piece *piece, unsigned short int grid[])
+int		remove_piece_grid(t_piece *piece, int grid[])
 {
 	int		max;
 	int		i;
@@ -117,18 +117,17 @@ int		remove_piece_grid(t_piece *piece, unsigned short int grid[])
 		{
 			t--;
 			//printf("indice:%d rang:%d\n", piece->l + i / 4, 15 - piece->c - i);
-			grid[piece->l + i / 4] &= ~( 1u << (15 - piece->c - i % 4));
+			grid[piece->l + i / 4] &= ~(1u << (15 - piece->c - i % 4));
 		}
 		i++;
 	}
 	return (1);
 }
 
-int		get_last_position(t_piece *piece, unsigned short int grid[],
-	unsigned char grid_size)
+int		get_last_position(t_piece *piece, int grid[], int grid_size)
 {
-	char	l;
-	char	c;
+	int		l;
+	int		c;
 
 	//printf("\n-- get_last_position %d\n", piece->tetra->n);
 	l = grid_size - piece->tetra->h;
@@ -158,11 +157,10 @@ int		get_last_position(t_piece *piece, unsigned short int grid[],
 	return (-1);
 }
 
-int		get_next_position(t_piece *piece, unsigned short int grid[],
-	unsigned char grid_size)
+int		get_next_position(t_piece *piece, int grid[], int grid_size)
 {
-	char	l;
-	char	c;
+	int		l;
+	int		c;
 	
 	//printf("\n-- get_next_position %d (p->l): %d (p->c):%d\n", piece->tetra->n, piece->l, piece->c);
 	if (piece->l * 16 + piece->c == piece->last)
@@ -204,11 +202,11 @@ int		get_next_position(t_piece *piece, unsigned short int grid[],
 	return (1);
 }
 
-int		solver_add_piece_grid(t_piece *pieces, unsigned char *p_bt_size,
-	unsigned short int grid[], unsigned char grid_size)
+int		solver_add_piece_grid(t_piece *pieces, int *p_bt_size, int grid[],
+	int grid_size)
 {
-	t_piece 			*piece;
-	int					next;
+	t_piece	*piece;
+	int		next;
 
 	//printf("\n-- solver_add_piece_grid %d\n", *p_bt_size);
 	piece = pieces + *p_bt_size;
@@ -243,9 +241,9 @@ int		solver_add_piece_grid(t_piece *pieces, unsigned char *p_bt_size,
 	return (0);
 }
 
-unsigned char	calc_grid_size(int pieces_nb)
+int		calc_grid_size(int pieces_nb)
 {
-	unsigned char		i;
+	int		i;
 
 	if (!pieces_nb)
 		return (-1);
@@ -255,10 +253,10 @@ unsigned char	calc_grid_size(int pieces_nb)
 	return (i);
 }
 
-int		solver_write_grid(unsigned short int grid[], unsigned char grid_size)
+int		solver_write_grid(int grid[], int grid_size)
 {
-	unsigned char		i;
-	unsigned char		j;
+	int		i;
+	int		j;
 
 	//printf("---*---*---*---* %d\n", grid_size);
 	ft_putstr("---*---*---*---* ");
@@ -280,23 +278,22 @@ int		solver_write_grid(unsigned short int grid[], unsigned char grid_size)
 	return (1);
 }
 
-int		solver_init(unsigned short int grid[], unsigned char grid_size,
-	t_piece *pieces, unsigned char *p_bt_size)
+int		solver_init(int grid[], int grid_size, 	t_piece *pieces, int *p_bt_size)
 {
-	unsigned char		i;
-	unsigned char		j;
+	int		i;
+	int		j;
 
 	//printf("------ solver_init i:\n");
 	i = 0;
 	while (i < GRID_MAX)
 	{
-		grid[i] = (unsigned short int)GRID_ALL_ONE;
+		grid[i] = GRID_ALL_ONE;
 		if (i < grid_size)
 		{
 			j = 0;
 			while (j < grid_size)
 			{
-				grid[i] &= ~(1u << (15 - j));
+				grid[i] &= ~(1 << (15 - j));
 				j++;
 			}
 		}
@@ -316,10 +313,10 @@ int		solver_init(unsigned short int grid[], unsigned char grid_size,
 
 int		solver(t_piece pieces[], int pieces_nb)
 {
-	unsigned char		grid_size;
-	unsigned short int	grid[GRID_MAX];
-	unsigned char		bt_size;
-	unsigned char		grid_ko;
+	int		grid_size;
+	int		grid[GRID_MAX];
+	int		bt_size;
+	int		grid_ko;
 
 	grid_size = calc_grid_size(pieces_nb);
 	//printf("grid_size : %d\n", grid_size);

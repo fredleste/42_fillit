@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 19:52:43 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/16 15:26:16 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/18 14:47:21 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,17 @@
 #include "output.h"
 #include "tetras_lib.h"
 
-
-void	init_tetras_lib_mock(t_tetra tetras_lib[])
+void	init_tetras_lib_mock(int tetras_lib[])
 {
-	tetras_lib[0].n = TETRA_N_0;
-	tetras_lib[0].h = TETRA_H_0;
-	tetras_lib[0].w = TETRA_W_0;
-	tetras_lib[1].n = TETRA_N_18;
-	tetras_lib[1].h = TETRA_H_18;
-	tetras_lib[1].w = TETRA_W_18;
-	tetras_lib[2].n = TETRA_N_0;
-	tetras_lib[2].h = TETRA_H_0;
-	tetras_lib[2].w = TETRA_W_0;
-	tetras_lib[3].n = TETRA_N_0;
-	tetras_lib[3].h = TETRA_H_0;
-	tetras_lib[3].w = TETRA_W_0;
-	tetras_lib[4].n = TETRA_N_0;
-	tetras_lib[4].h = TETRA_H_0;
-	tetras_lib[4].w = TETRA_W_0;
-	tetras_lib[5].n = TETRA_N_0;
-	tetras_lib[5].h = TETRA_H_0;
-	tetras_lib[5].w = TETRA_W_0;
-	tetras_lib[6].n = TETRA_N_18;
-	tetras_lib[6].h = TETRA_H_18;
-	tetras_lib[6].w = TETRA_W_18;
+	tetras_lib[0] = TETRA_N_0;
+	tetras_lib[1] = TETRA_N_18;
+	tetras_lib[2] = TETRA_N_11;
+	/*
+	tetras_lib[3] = TETRA_N_0;
+	tetras_lib[4] = TETRA_N_0;
+	tetras_lib[5] = TETRA_N_0;
+	tetras_lib[6] = TETRA_N_18;
+	*/
 }
 
 int		test_params_mock(int argc)
@@ -47,49 +34,49 @@ int		test_params_mock(int argc)
 	return (1);
 }
 
-int		test_source_mock(char *file_name, t_tetra tetras_lib[],
+int		test_source_mock(char *file_name, int tetras_lib[],
 	t_piece pieces[])
 {
 	int		i;
 
 	i = 0;
-	while (i < MOCK_PIECES_NB)
+	while (i++ < MOCK_TETRAS_NB)
 	{
-		pieces[i].tetra = &(tetras_lib[i]);
+		pieces[i].n = tetras_lib[i];
 		pieces[i].l = -1;
 		pieces[i].c = -1;
 		pieces[i].first = -1;
 		pieces[i].last = -1;
-		i++;
+		pieces[i].pos = -1;
+		pieces[i].prev = -1;
 	}
+	pieces[0].h = 1;
+	pieces[0].w = 4;
+	pieces[0].max = 15;
+	pieces[0].min = 11;
+	pieces[1].h = 4;
+	pieces[1].w = 1;
+	pieces[1].max = 15;
+	pieces[1].min = 2;
+	pieces[2].h = 2;
+	pieces[2].w = 3;
+	pieces[2].max = 13;
+	pieces[2].min = 8;
+	pieces[3].n = tetras_lib[0];
+	pieces[3].l = -1;
+	pieces[3].c = -1;
+	pieces[3].first = -1;
+	pieces[3].last = -1;
+	pieces[3].pos = -1;
+	pieces[3].prev = 0;
+	pieces[3].h = pieces[3].h;
+	pieces[3].w = pieces[3].w;
+	pieces[3].max = pieces[3].max;
+	pieces[3].min = pieces[3].min;
 	return (MOCK_PIECES_NB);
 }
 
-int		solver_mock(t_piece pieces[], int pieces_nb, t_list **p_bt)
+int		solver_mock(t_piece pieces[], int pieces_nb)
 {
-	int		i;
-	t_list	*new;
-	t_list	*bt;
-	
-	if (!pieces_nb)
-		return (-1);
-	i = 0;
-	while (i < pieces_nb)
-	{
-		new = ft_mba_lstnew((void const *)&(pieces[i]), sizeof(void *));
-		if (!new)
-		{
-			put_error_log("Malloc error : ft_mba_new");
-			return (-1);
-		}
-		if (!i)
-			bt = new;
-		else
-		{
-			new->next = bt;
-		}
-		i++;
-	}
-	*p_bt = new;
 	return (MOCK_GRID_SIZE);
 }

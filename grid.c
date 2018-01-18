@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 08:31:38 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/16 16:38:50 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/18 14:19:31 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 char	**init_grid(int grid_size)
 {
-	unsigned char	l;
-	unsigned char	c;
+	int		l;
+	int		c;
 	char			**grid;
 
 	grid = NULL;
@@ -43,13 +43,13 @@ char	**init_grid(int grid_size)
 	return (grid);
 }
 
-void 	set_tetra_grid(char **grid, t_piece *piece, char c)
+void	set_tetra_grid(char **grid, t_piece *piece, char c)
 {
 	int		max;
 	int		i;
 	int		t;
 
-	max = (piece->tetra->h - 1) * 4 + piece->tetra->w; 
+	max = (piece->tetra->h - 1) * 4 + piece->tetra->w;
 	i = 0;
 	t = 4;
 	//printf("-- set_tetra_grid tetra:%d max:%d piece->l:%d piece->c:%d\n", piece->tetra->n, max, piece->l, piece->c);
@@ -65,11 +65,11 @@ void 	set_tetra_grid(char **grid, t_piece *piece, char c)
 	}
 }
 
-int 	fill_grid(char **grid, t_piece *pieces, int pieces_nb)
+int		fill_grid(char **grid, t_piece *pieces, int pieces_nb)
 {
 	int		i;
 	char	c;
-	
+
 	i = 0;
 	c = 'A';
 	//printf("-- set_grid grid_size: %d pieces_nb:%d\n", grid_size, pieces_nb);
@@ -87,7 +87,7 @@ int		write_grid(char **grid, int grid_size)
 {
 	int		l;
 	int		c;
-	
+
 	l = 0;
 	while (l < grid_size)
 	{
