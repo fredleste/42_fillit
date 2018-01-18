@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 11:29:18 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/17 19:10:01 by fleste-l         ###   ########.fr       */
+/*   Updated: 2018/01/18 14:20:09 by fleste-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@
 # define TETRA_N_18 0x8888  // "1000 1000 1000 1000"
 # define TETRA_H_18 4
 # define TETRA_W_18 1
-
+/*
 typedef struct	s_tetra
 {
 	unsigned short int	n;
@@ -77,5 +77,7 @@ typedef struct	s_tetra
 	unsigned char		h;
 	unsigned char		max;
 }				t_tetra;
-void			init_tetras_lib	(t_tetra tetras_lib[]);
+*/
+void			init_tetras_lib	(int tetras_lib[]);
+
 #endif
