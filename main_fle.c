@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:02:11 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/18 14:53:08 by fleste-l         ###   ########.fr       */
+/*   Updated: 2018/01/18 20:02:29 by fleste-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,15 @@ int		main(int argc, char *argv[])
 	pieces_nb = test_source(argv[1], tetras_lib, pieces);
 	if (pieces_nb == -1)
 		return (put_error(1));
-//	printf("%d\n", pieces_nb);
+	printf("%d\n", pieces_nb);
 	i = 0;
 	while (i < pieces_nb)
 	{
-//		printf("%x\n", pieces[i].tetra->n);
+		printf("%x\n", pieces[i].n);
+		printf("%d\n", pieces[i].min);
+		printf("%d\n", pieces[i].max);
+		printf("%d\n", pieces[i].h);
+		printf("%d\n", pieces[i].w);
 		i++;
 	}
 //	bt = NULL;
