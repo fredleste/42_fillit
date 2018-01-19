@@ -21,7 +21,8 @@ HEADERS				=		-I$(DIR_HEADERS)		\
 							-I$(DIR_HEADERS_LIB)
 
 SRCS				=		$(DIR)/main_test.c 				\
-							$(DIR_FILLIT_SRC)/mock.c		\
+							$(DIR)/output_test.c 				\
+							$(DIR_FILLIT_SRC)/test.c		\
 							$(DIR_FILLIT_SRC)/solver.c		\
 							$(DIR_FILLIT_SRC)/output.c		\
 							$(DIR_FILLIT_SRC)/grid.c		\
