@@ -6,47 +6,56 @@
 #    By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/08 14:19:31 by mbaron            #+#    #+#              #
-#    Updated: 2018/01/11 08:39:16 by mbaron           ###   ########.fr        #
+#    Updated: 2018/01/19 21:39:29 by mbaron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=		fillit
+NAME			=		fillit
 
-DIR			=		./scr
+DIR				=		.
 
-DIR_HEADERS	=		./inc
+DIR_HEADERS		=		$(DIR)
 
-LIB			=		-L./libft -lft
+DIR_LIB			=		$(DIR)/libft
 
-HEADERS		=		-I$(DIR_HEADERS)
+DIR_LIB_HEADERS	=		$(DIR_LIB)
 
-SRCS		=		main.c		\
-					solver.c	\
-					output.c	\
-					grid.c		\
-					test.c		\
-					tetras_lib.c
+LIB				=		-L$(DIR_LIB) -lft
 
-OBJS		=		$(SRCS:.c=.o)
+HEADERS			=		-I$(DIR_HEADERS)	\
+						-I$(DIR_LIB_HEADERS)
 
-CC			=		gcc
+SRCS			=		main.c			\
+						solver.c		\
+						solver_add.c	\
+						output.c		\
+						test.c
+						
+OBJS			=		$(SRCS:.c=.o)
 
-CFLAGS		=		-Wall -Wextra
+CC				=		gcc
 
-RM			=		rm -f
+CFLAGS			=		-Wall -Wextra -Werror
 
-all			:		$(NAME)
+RM				=		rm -f
 
-$(NAME)		:		$(OBJS)
-					$(CC) -o $(NAME) $(OBJS) $(CFLAGS) $(HEADERS) $(LIB)
+all				:		$(NAME)
 
-%.o			:		%.c
-					$(CC) -o $@ -c $< $(CFLAGS) $(HEADERS)
+$(NAME)			:		$(OBJS)
+						$(MAKE) -C $(DIR_LIB)
+						$(CC) -o $(NAME) $(OBJS) $(CFLAGS) $(HEADERS) $(LIB)
 
-clean		:
-					$(RM) $(OBJS)
+%.o				:		%.c
+						$(CC) -o $@ -c $< $(CFLAGS) $(HEADERS)
 
-fclean		:		clean
-					$(RM) $(NAME)
+clean			:
+						$(MAKE) -C $(DIR_LIB) clean
+						$(RM) $(OBJS)
 
-re			:		fclean all
+fclean			:		clean
+						$(MAKE) -C $(DIR_LIB) fclean
+						$(RM) $(NAME)
+						
+re				:		fclean all
+
+.PHONY			: 		libft

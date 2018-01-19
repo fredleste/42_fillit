@@ -6,14 +6,11 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 11:39:33 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/19 18:30:09 by fleste-l         ###   ########.fr       */
+/*   Updated: 2018/01/19 21:23:12 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
-#include "test.h"
-#include "tetras_lib.h"
-#include "output.h"
+#include "fillit.h"
 
 int		read_file(char *file_name, char buf[])
 {

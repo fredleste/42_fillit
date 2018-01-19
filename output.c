@@ -6,48 +6,134 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 13:01:42 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/18 19:12:55 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/19 21:37:55 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "main.h"
-#include "output.h"
-#include "grid.h"
+#include "fillit.h"
 
-int		put_error(int error)
+static void	del_grid(char **grid, int grid_size)
 {
-	if (error)
-		ft_putstr("error\n");
-	else
-		ft_putstr(FILLIT_USAGE);
-	return (1);
+	int		l;
+
+	l = 0;
+	while (l < grid_size)
+	{
+		free(grid[l]);
+		grid[l++] = NULL;
+	}
+	free(grid);
+	grid = NULL;
 }
 
-int		put_error_log(const char *str)
+char	**init_grid(int grid_size)
 {
-	ft_putstr_fd(str, 2);
-	return (1);
+	int		l;
+	int		c;
+	char	**grid;
+
+	grid = NULL;
+	if (!(grid = (char **)malloc(grid_size * sizeof(char *))))
+		return (NULL);
+	l = 0;
+	while (l < grid_size)
+	{
+		if (!(grid[l] = (char *)malloc(grid_size * sizeof(char))))
+		{
+			del_grid(grid, l - 1);
+			return (0);
+		}
+		c = 0;
+		while (c < grid_size)
+		{
+			grid[l][c] = C_POINT;
+			c++;
+		}
+		l++;
+	}
+	return (grid);
+}
+
+void	set_tetra_grid(char **grid, t_piece *piece, char letter)
+{
+	int		i;
+	int		l;
+	int		c;
+
+	i = piece->max;
+	l = piece->l;
+	c = 15 + piece->c;
+	while (i > piece->min)
+	{
+		if (piece->n & (1 << i))
+		{
+			grid[l][c - i] = letter;
+		}
+		if (!(i % 4))
+		{
+			l++;
+			c -= 4;
+		}
+		i--;
+	}
+}
+
+static void	fill_grid(char **grid, t_piece *pieces, int pieces_nb)
+{
+	int		i;
+	int		j;
+	int		l;
+	int		c;
+
+	i = 0;
+	while (i < pieces_nb)
+	{
+		j = pieces[i].max;
+		l = pieces[i].l;
+		c = 15 + pieces[i].c;
+		while (j > pieces[i].min)
+		{
+			if (pieces[i].n & (1 << j))
+				grid[l][c - j] = 'A' + i;
+			if (!(j % 4))
+			{
+				l++;
+				c -= 4;
+			}
+			j--;
+		}
+		i++;
+	}
+}
+
+static void	write_grid(char **grid, int grid_size)
+{
+	int		l;
+	int		c;
+
+	l = 0;
+	while (l < grid_size)
+	{
+		c = 0;
+		while (c < grid_size)
+		{
+			ft_putchar(grid[l][c]);
+			c++;
+		}
+		ft_putchar('\n');
+		l++;
+	}
 }
 
 int		put_grid(t_piece *pieces, int pieces_nb, int grid_size)
 {
 	char	**grid;
 
-	if (!pieces_nb || !grid_size)
-		return (put_error(1));
 	grid = NULL;
-	//put_error_log("---------------------\n------------------ INIT GRID\n\n");
 	if (!(grid = init_grid(grid_size)))
-		return (put_error_log("Malloc error : init_grid"));
-		//put_error_log("---------------------\n------------------ FILL GRID\n\n");
-	if (!fill_grid(grid, pieces, pieces_nb))
-		return (put_error_log("Error in fill_grid"));
-		//put_error_log("---------------------\n------------------ WRITE GRID\n\n");
-	if (!write_grid(grid, grid_size))
-		return (put_error_log("Error in write_grid"));
-		//put_error_log("---------------------\n------------------ DEL GRID\n\n");
-	if (!del_grid(grid, grid_size))
-		return (put_error_log("Error in del_grid"));
+		return (put_error(1));
+	fill_grid(grid, pieces, pieces_nb);
+	write_grid(grid, grid_size);
+	del_grid(grid, grid_size);
 	return (0);
 }

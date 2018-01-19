@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/17 09:00:49 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/18 10:46:46 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/19 19:30:35 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,10 @@ static int		test_test_params(int argc, char *argv[],
 	return (0);
 }
 
-static int		run_fillit(const char files_input_test[256], clock_t timer_t[4])
+static int		main_fillit(const char files_input_test[256],
+	clock_t timer_t[4])
 {
-	t_tetra	tetras_lib[TETRAS_LIB_NB];
+	int		tetras_lib[TETRAS_LIB_NB];
 	t_piece	pieces[PIECES_NB_MAX];
 	int		pieces_nb;
 	int		grid_size;
@@ -77,7 +78,9 @@ int				main(int argc, char *argv[])
 	const char	files_input_test[FILLIT_TEST_INPUT_NB][256] =
 	{FILLIT_TEST_INPUT_FILE_0, FILLIT_TEST_INPUT_FILE_1,
 	FILLIT_TEST_INPUT_FILE_2, FILLIT_TEST_INPUT_FILE_3,
-	FILLIT_TEST_INPUT_FILE_4};
+	FILLIT_TEST_INPUT_FILE_4, FILLIT_TEST_INPUT_FILE_5,
+	FILLIT_TEST_INPUT_FILE_6, FILLIT_TEST_INPUT_FILE_7,
+	FILLIT_TEST_INPUT_FILE_8, FILLIT_TEST_INPUT_FILE_9};
 	clock_t		timer_t[FILLIT_TEST_INPUT_NB][4];
 	int			grid_size[FILLIT_TEST_INPUT_NB];
 	int			t;
@@ -87,7 +90,7 @@ int				main(int argc, char *argv[])
 	t = FILLIT_TEST_INPUT_NB;
 	while (t)
 	{
-		grid_size[FILLIT_TEST_INPUT_NB - t] = run_fillit(
+		grid_size[FILLIT_TEST_INPUT_NB - t] = main_fillit(
 			files_input_test[FILLIT_TEST_INPUT_NB - t],
 			timer_t[FILLIT_TEST_INPUT_NB - t]);
 		t--;
