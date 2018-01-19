@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:02:11 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/18 20:02:29 by fleste-l         ###   ########.fr       */
+/*   Updated: 2018/01/19 17:19:31 by fleste-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 #include "solver.h"
 #include "output.h"
 
-#include <stdio.h>
-
 int		main(int argc, char *argv[])
 {
 	int				tetras_lib[TETRAS_LIB_NB];
@@ -26,7 +24,7 @@ int		main(int argc, char *argv[])
 	int				i;
 //	int				grid_size;
 
-	if (!test_params(argc))
+	if (argc != 2)
 		return (put_error(0));
 	init_tetras_lib(tetras_lib);
 	pieces_nb = test_source(argv[1], tetras_lib, pieces);
@@ -41,6 +39,7 @@ int		main(int argc, char *argv[])
 		printf("%d\n", pieces[i].max);
 		printf("%d\n", pieces[i].h);
 		printf("%d\n", pieces[i].w);
+		printf("%d\n", pieces[i].prev);
 		i++;
 	}
 //	bt = NULL;
