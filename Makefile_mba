@@ -21,7 +21,7 @@ LIB			=		-L./libft -lft
 HEADERS		=		-I$(DIR_HEADERS)
 
 SRCS		=		main_mba.c	\
-					mock.c		\
+					test.c		\
 					solver.c	\
 					output.c	\
 					grid.c		\
