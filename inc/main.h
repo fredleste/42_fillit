@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:03:55 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/18 16:49:29 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/19 09:29:08 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@
 typedef struct	s_piece
 {
 	int			n;
+	int			min;
+	int			max;
 	int			h;
 	int			w;
 	int			l;
 	int			c;
-	int			min;
-	int			max;
 	int			first;
 	int			last;
 	int			pos;

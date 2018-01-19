@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 11:39:33 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/17 17:32:50 by fleste-l         ###   ########.fr       */
+/*   Updated: 2018/01/18 20:30:06 by fleste-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		put_file(char *file_name, char *str_pieces)
 	return ((n + 1) / 21);
 }
 
-t_tetra	*put_binary(char *str, t_tetra tetras_lib[])
+int		put_binary(char *str, int tetras_lib[])
 {
 	int				i;
 	unsigned short	n;
@@ -65,7 +65,7 @@ t_tetra	*put_binary(char *str, t_tetra tetras_lib[])
 		if (str[i] == '#')
 			n = n | (1 << (15 - i));
 		else if (str[i] != '.')
-			return (NULL);
+			return (-1);
 		i++;
 	}
 	while ((n & 0x8888) == 0)
@@ -73,38 +73,66 @@ t_tetra	*put_binary(char *str, t_tetra tetras_lib[])
 	while ((n & 0xf000) == 0)
 		n = n << 4;
 	i = 0;
-	while (i < TETRAS_LIB_NB && n != tetras_lib[i].n)
+	while (i < TETRAS_LIB_NB && n != tetras_lib[i])
 		i++;
-	if (i == TETRAS_LIB_NB)
-		return (NULL);
-	return (&(tetras_lib[i]));
+	return (i == TETRAS_LIB_NB ? -1 : tetras_lib[i]);
 }
 
-int		test_source(char *file_name, t_tetra tetras_lib[], t_piece pieces[])
+void		put_piece(t_piece pieces[], int pieces_nb)
 {
 	int		i;
-	int		n;
+	int		x;
+
+	i = 0;
+	while (i < pieces_nb)
+	{
+		pieces[i].prev = -1;
+		x = 0;
+		while (!(pieces[i].n & (1u << x)))
+			x++;
+		pieces[i].min = x - 1;
+		pieces[i].h = 4 - (x / 4);
+		x = 15;
+		while (!(pieces[i].n & (1u << x)))
+			x--;
+		pieces[i].max = x;
+		x = 0;
+		while (!(pieces[i].n & (0x1111u << x)))
+			x++;
+		pieces[i].w = 4 - x;
+		pieces[i].l = -1;
+		pieces[i].c = -1;
+		pieces[i].first = -1;
+		pieces[i].last = -1;
+		pieces[i].pos = -1;
+		i++;
+	}
+}
+
+int		test_source(char *file_name, int tetras_lib[], t_piece pieces[])
+{
+	int		i;
+	int		p;
 	int		pieces_nb;
 	char	str[16];
 	char	str_pieces[BUF_SIZE + 1];
 
 	pieces_nb = put_file(file_name, str_pieces);
-	n = 0;
-	while (n < pieces_nb)
+	p = 0;
+	while (p < pieces_nb)
 	{
 		i = 0;
 		while (i < 16)
 		{
-			str[i] = str_pieces[(n * 16) + i];
+			str[i] = str_pieces[(p * 16) + i];
 			i++;
 		}
 		str[i] = '\0';
-		pieces[n].tetra = put_binary(str, tetras_lib);
-		if (pieces[n].tetra == NULL)
+		pieces[p].n = put_binary(str, tetras_lib);
+		if (pieces[p].n == -1)
 			return (-1);
-		pieces[n].l = -1;
-		pieces[n].c = -1;
-		n++;
+		p++;
 	}
+	put_piece(pieces, pieces_nb);
 	return (pieces_nb);
 }

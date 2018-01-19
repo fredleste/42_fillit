@@ -6,7 +6,7 @@
 /*   By: fleste-l <fleste-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 18:50:14 by fleste-l          #+#    #+#             */
-/*   Updated: 2018/01/11 19:18:01 by fleste-l         ###   ########.fr       */
+/*   Updated: 2018/01/18 14:49:42 by fleste-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <unistd.h>
 # define BUF_SIZE 545
 
-int				test_params(int argc);
-int				test_source(char *file_name, t_tetra tetras_lib[],
-	t_piece *pieces);
+int		test_params(int argc);
+int		test_source(char *file_name, int tetras_lib[], t_piece pieces[]);
 #endif

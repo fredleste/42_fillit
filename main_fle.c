@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:02:11 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/16 18:21:51 by fleste-l         ###   ########.fr       */
+/*   Updated: 2018/01/18 20:02:29 by fleste-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,10 @@
 
 int		main(int argc, char *argv[])
 {
-	t_tetra			tetras_lib[TETRAS_LIB_NB];
+	int				tetras_lib[TETRAS_LIB_NB];
 	t_piece			pieces[PIECES_NB_MAX];
 	int				pieces_nb;
 	int				i;
-//	t_list			*bt;
 //	int				grid_size;
 
 	if (!test_params(argc))
@@ -37,7 +36,11 @@ int		main(int argc, char *argv[])
 	i = 0;
 	while (i < pieces_nb)
 	{
-		printf("%x\n", pieces[i].tetra->n);
+		printf("%x\n", pieces[i].n);
+		printf("%d\n", pieces[i].min);
+		printf("%d\n", pieces[i].max);
+		printf("%d\n", pieces[i].h);
+		printf("%d\n", pieces[i].w);
 		i++;
 	}
 //	bt = NULL;

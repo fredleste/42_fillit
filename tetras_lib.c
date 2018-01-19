@@ -6,14 +6,14 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 11:36:44 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/17 20:24:52 by fleste-l         ###   ########.fr       */
+/*   Updated: 2018/01/18 14:20:11 by fleste-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 #include "tetras_lib.h"
 
-void	init_tetras_lib_n(t_tetra tetras_lib[])
+/*void	init_tetras_lib_n(t_tetra tetras_lib[])
 {
 	tetras_lib[0].n = TETRA_N_0;
 	tetras_lib[1].n = TETRA_N_1;
@@ -91,17 +91,32 @@ void	init_tetras_lib_max(t_tetra tetras_lib[])
 	while (i < TETRAS_LIB_NB)
 	{
 		x = 0;
-		while (!((tetras_lib[i].n >> x) & 1u))
+		while (!(tetras_lib[i].n & (1u << x)))
 			x++;
 		tetras_lib[i].max = 16 - x;
 		i++;
 	}
-}
+}*/
 
-void	init_tetras_lib(t_tetra tetras_lib[])
+void	init_tetras_lib(int tetras_lib[])
 {
-	init_tetras_lib_n(tetras_lib);
-	init_tetras_lib_h(tetras_lib);
-	init_tetras_lib_w(tetras_lib);
-	init_tetras_lib_max(tetras_lib);
+	tetras_lib[0] = TETRA_N_0;
+	tetras_lib[1] = TETRA_N_1;
+	tetras_lib[2] = TETRA_N_2;
+	tetras_lib[3] = TETRA_N_3;
+	tetras_lib[4] = TETRA_N_4;
+	tetras_lib[5] = TETRA_N_5;
+	tetras_lib[6] = TETRA_N_6;
+	tetras_lib[7] = TETRA_N_7;
+	tetras_lib[8] = TETRA_N_8;
+	tetras_lib[9] = TETRA_N_9;
+	tetras_lib[10] = TETRA_N_10;
+	tetras_lib[11] = TETRA_N_11;
+	tetras_lib[12] = TETRA_N_12;
+	tetras_lib[13] = TETRA_N_13;
+	tetras_lib[14] = TETRA_N_14;
+	tetras_lib[15] = TETRA_N_15;
+	tetras_lib[16] = TETRA_N_16;
+	tetras_lib[17] = TETRA_N_17;
+	tetras_lib[18] = TETRA_N_18;
 }
