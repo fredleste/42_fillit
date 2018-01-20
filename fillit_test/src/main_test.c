@@ -6,15 +6,12 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/17 09:00:49 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/19 19:30:35 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/20 19:07:56 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main_test.h"
-#include "main.h"
-#include "test.h"
-#include "solver.h"
-#include "output.h"
+#include "fillit.h"
 
 static int		test_test_params(int argc, char *argv[],
 	char test_params[2][2048])
@@ -25,9 +22,10 @@ static int		test_test_params(int argc, char *argv[],
 	ft_strcpy(test_params[1], FILLIT_TEST_DESCRIPTION);
 	if (argc == 3 || argc == 5)
 	{
-		if ((!ft_strcmp(argv[1], "-f") || !ft_strcmp(argv[1], "-d"))
-			|| (argc == 5 && !ft_strcmp(argv[1], argv[3])
-				&& (!ft_strcmp(argv[3], "-f") || !ft_strcmp(argv[3], "-d"))))
+		if ((ft_strcmp(argv[1], "-f") && ft_strcmp(argv[1], "-d"))
+			|| (argc == 5
+				&& ((ft_strcmp(argv[3], "-f") && ft_strcmp(argv[3], "-d"))
+					|| !ft_strcmp(argv[1], argv[3]))))
 			return (test_put_error(0));
 		if (!ft_strcmp(argv[1], "-f"))
 			ft_strcpy(test_params[0], argv[2]);
@@ -75,12 +73,17 @@ static int		main_fillit(const char files_input_test[256],
 int				main(int argc, char *argv[])
 {
 	char		test_params[2][2048];
+	/*
 	const char	files_input_test[FILLIT_TEST_INPUT_NB][256] =
 	{FILLIT_TEST_INPUT_FILE_0, FILLIT_TEST_INPUT_FILE_1,
 	FILLIT_TEST_INPUT_FILE_2, FILLIT_TEST_INPUT_FILE_3,
 	FILLIT_TEST_INPUT_FILE_4, FILLIT_TEST_INPUT_FILE_5,
 	FILLIT_TEST_INPUT_FILE_6, FILLIT_TEST_INPUT_FILE_7,
 	FILLIT_TEST_INPUT_FILE_8, FILLIT_TEST_INPUT_FILE_9};
+	*/
+	const char	files_input_test[FILLIT_TEST_INPUT_NB][256] =
+	{FILLIT_TEST_INPUT_FILE_0, FILLIT_TEST_INPUT_FILE_1,
+	FILLIT_TEST_INPUT_FILE_2};
 	clock_t		timer_t[FILLIT_TEST_INPUT_NB][4];
 	int			grid_size[FILLIT_TEST_INPUT_NB];
 	int			t;

@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbaron <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 15:59:27 by mbaron            #+#    #+#             */
-/*   Updated: 2017/12/18 16:39:39 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/20 14:35:38 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <strings.h>
+#include <stdlib.h>
 
 char	*ft_strstr(const char *haystack, const char *needle)
 {

@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/18 08:51:56 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/18 10:37:26 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/20 19:41:56 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,17 @@ static void	put_line(FILE *fd)
 	int		i;
 	int		j;
 
-	i = 6;
-	while (--i)
+	i = 0;
+	while (i < 6)
 	{
 		fprintf(fd, "|");
 		j = !i ? 40 : 20;
-		while (j--)
+		while (j)
+		{
 			fprintf(fd, "-");
+			j--;
+		}
+		i++;
 	}
 	fprintf(fd, "|\n");
 }
@@ -43,12 +47,19 @@ int			test_output(char test_params[2][2048],
 	int grid_size[FILLIT_TEST_INPUT_NB],
 	clock_t timer_t[FILLIT_TEST_INPUT_NB][4])
 {
-	FILE	*fd;
-	int		t;
+	FILE		*fd;
+	int			t;
+	time_t		now;
+	struct tm 	tm_now = *localtime (&now);
+	char 		s_now[20];
 
 	if (!(fd = fopen(test_params[0], "a")))
 		return (test_put_error(0));
-	fprintf(fd, "\n\n%s\n", test_params[1]);
+	now = time(NULL);
+	tm_now = *localtime (&now);
+	strftime(s_now, sizeof s_now, "%d/%m/%Y %H:%M:%S", &tm_now);
+	fprintf (fd, "\n\n%s\n%s\n", s_now, test_params[1]);
+	put_line(fd);
 	fprintf(fd, "|%40s|%20s|%20s|%20s|%20s|%20s|\n", "File", "Result",
 	"Test duration", "Solver duration", "Output duration", "Total duration");
 	put_line(fd);

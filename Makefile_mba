@@ -24,8 +24,6 @@ SRCS		=		main_mba.c	\
 					test.c		\
 					solver.c	\
 					output.c	\
-					grid.c		\
-					tetras_lib.c
 
 OBJS		=		$(SRCS:.c=.o)
 
