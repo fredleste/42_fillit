@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:51:32 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/19 21:28:28 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/20 23:17:14 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static int	calc_grid_size(int pieces_nb)
 	return (i);
 }
 
-/*
 int		solver_write_grid(int grid[], int grid_size)
 {
 	int		i;
@@ -57,7 +56,6 @@ int		solver_write_grid(int grid[], int grid_size)
 	ft_putstr("---*---*---*---*\n");
 	return (1);
 }
-*/
 
 static int	solver_init(int grid[], int grid_size, t_piece *pieces,
 	int *p_bt_size)
