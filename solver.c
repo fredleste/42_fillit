@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:51:32 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/21 08:30:03 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/21 09:01:42 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,10 @@ static int	solver_init(int grid[], int grid_size, t_piece *pieces,
 	}
 	i = *p_bt_size;
 	while (i--)
+	{
 		init_piece(&pieces[i]);
+		pieces[i].last = -1;
+	}
 	*p_bt_size = 0;
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:02:11 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/19 21:27:34 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/21 08:59:03 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void		init_piece(t_piece *piece)
 	piece->l = -1;
 	piece->c = -1;
 	piece->first = -1;
-	piece->last = -1;
+	//piece->last = -1;
 	piece->pos = -1;
 }
 
