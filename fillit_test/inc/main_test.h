@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/17 11:44:23 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/20 19:45:40 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/21 07:58:45 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define FILLIT_TEST_INPUT_FILE_7 "./samples/valid_sample_forum_13.fillit"
 # define FILLIT_TEST_INPUT_FILE_8 "./samples/valid_sample_forum_14.fillit"
 # define FILLIT_TEST_INPUT_FILE_9 "./samples/valid_sample_forum_15.fillit"
-# define FILLIT_TEST_INPUT_NB 3
+# define FILLIT_TEST_INPUT_NB 4
 
 int		test_put_error(int error);
 int		test_output(char test_params[2][2048],

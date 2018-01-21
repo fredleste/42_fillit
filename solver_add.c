@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 20:13:20 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/21 01:11:52 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/21 08:56:00 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,30 +35,31 @@ static int		toggle_piece_grid(t_piece *piece, int grid[])
 	return (1);
 }
 
-static int		get_next_line(t_piece *piece, int grid[], int l, int next)
+static int		get_next_line_last(t_piece *piece, int grid[], int l)
 {
 	int		i;
 
-	if (next)
+	i = 0;
+	while (i < piece->h)
 	{
-		i = piece->h;
-		while (i)
-		{
-			//printf("get_next_line next:%d ltest:%d lnouv:%d\n", next, l + i - 1, l + i);
-			if (grid[l + i - 1] == GRID_ALL_ONE)
-				return (l + i);
-			i--;
-		}
+		if (grid[l + i] == GRID_ALL_ONE)
+			return (l - piece->h + i);
+		i++;
 	}
-	else
+	return (l);
+}
+
+static int		get_next_line_next(t_piece *piece, int grid[], int l)
+{
+	int		i;
+
+	i = l + piece->h;
+	while (i > l)
 	{
-		i = 0;
-		while (i < piece->h)
-		{
-			if (grid[l + i] == GRID_ALL_ONE)
-				return (l - piece->h + i);
-			i++;
-		}
+		i--;
+		//printf("get_next_line next:%d ltest:%d lnouv:%d\n", next, l + i - 1, l + i);
+		if (grid[i] == GRID_ALL_ONE)
+			return (i + 1);
 	}
 	return (l);
 }
@@ -101,7 +102,7 @@ static int		get_last_position(t_piece *pieces, int bt_size, int grid[],
 	{
 		if (p->pos > 16 * l + c)
 			return (-1);
-		l_next = get_next_line(p, grid, l, 0);
+		l_next = get_next_line_last(p, grid, l);
 		if (l != l_next)
 		{
 			//printf("get_last_position gs:%d p:%d l:%d l_next:%d l_min:%d\n", grid_size, bt_size, l, l_next, l_min);
@@ -151,7 +152,7 @@ static int		get_next_position(t_piece *pieces, int bt_size, int grid[],
 	}
 	else
 		p->c += 1;
-	l_next = get_next_line(p, grid, p->l, 1);
+	l_next = get_next_line_next(p, grid, p->l);
 	if (p->l != l_next)
 	{
 		//printf("get_next_position gs:%d p:%d last:%d l:%d l_next:%d gs-p->h:%d\n", grid_size, bt_size, p->last, p->l, l_next, grid_size - p->h);
@@ -183,7 +184,8 @@ int				solver_add_piece_grid(t_piece *pieces, int *p_bt_size,
 	piece = pieces + *p_bt_size;
 	if (piece->prev != -1)
 		piece->pos = pieces[*p_bt_size].pos;
-	piece->last = get_last_position(pieces, *p_bt_size, grid, grid_size);
+	if (piece->last == -1)
+		piece->last = get_last_position(pieces, *p_bt_size, grid, grid_size);
 	next = (piece->last == -1 || (piece->last > -1
 		&& piece->pos == piece->last))
 		? 0 : get_next_position(pieces, *p_bt_size, grid, grid_size);
