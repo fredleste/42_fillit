@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 20:13:20 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/21 08:56:00 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/21 08:57:34 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,8 +184,7 @@ int				solver_add_piece_grid(t_piece *pieces, int *p_bt_size,
 	piece = pieces + *p_bt_size;
 	if (piece->prev != -1)
 		piece->pos = pieces[*p_bt_size].pos;
-	if (piece->last == -1)
-		piece->last = get_last_position(pieces, *p_bt_size, grid, grid_size);
+	piece->last = get_last_position(pieces, *p_bt_size, grid, grid_size);
 	next = (piece->last == -1 || (piece->last > -1
 		&& piece->pos == piece->last))
 		? 0 : get_next_position(pieces, *p_bt_size, grid, grid_size);
