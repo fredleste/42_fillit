@@ -1,61 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 11:39:33 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/22 18:48:43 by fleste-l         ###   ########.fr       */
+/*   Updated: 2018/01/22 19:05:24 by fleste-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		read_file(char *file_name, char buf[])
-{
-	int		n;
-	int		fd;
-
-	fd = open(file_name, O_RDONLY);
-	if (fd == -1)
-		return (0);
-	n = read(fd, buf, BUF_SIZE);
-	if (close(fd) == -1)
-		return (0);
-	return (n);
-}
-
-int		put_file(char *file_name, char *str_pieces)
-{
-	int		n;
-	int		i;
-	int		j;
-	char	buf[BUF_SIZE + 1];
-
-	n = read_file(file_name, buf);
-	if ((n + 1) % 21 != 0)
-		return (-1);
-	i = 0;
-	j = 0;
-	while (i < n)
-	{
-		if ((i + 1 - i / 21) % 5 == 0 || (i + 1) % 21 == 0)
-		{
-			if (buf[i] != '\n')
-				return (-1);
-		}
-		else if (buf[i] != '.' && buf[i] != '#')
-			return (-1);
-		else
-			str_pieces[j++] = buf[i];
-		i++;
-	}
-	str_pieces[j] = '\0';
-	return ((n + 1) / 21);
-}
-
-int		put_binary(char *str, int tetras_lib[])
+static int	put_binary(char *str, int tetras_lib[])
 {
 	int				i;
 	unsigned short	n;
@@ -80,15 +37,11 @@ int		put_binary(char *str, int tetras_lib[])
 	return (i == TETRAS_LIB_NB ? -1 : n);
 }
 
-void	init_piece(t_piece *piece)
+static void	input_init_piece(t_piece *piece)
 {
 	int		x;
 
-	piece->l = -1;
-	piece->c = -1;
-	piece->first = -1;
-	piece->last = -1;
-	piece->pos = -1;
+	init_piece(piece);
 	x = 0;
 	while (!(piece->n & (1u << x)))
 		x++;
@@ -104,7 +57,7 @@ void	init_piece(t_piece *piece)
 	piece->w = 4 - x;
 }
 
-void	put_piece(t_piece pieces[], int p)
+static void	put_piece(t_piece pieces[], int p)
 {
 	int		x;
 
@@ -120,10 +73,10 @@ void	put_piece(t_piece pieces[], int p)
 		}
 	}
 	if (pieces[p].prev == -1)
-		init_piece(&pieces[p]);
+		input_init_piece(&pieces[p]);
 }
 
-int		test_source(char *file_name, int tetras_lib[], t_piece pieces[])
+int			test_source(char *file_name, int tetras_lib[], t_piece pieces[])
 {
 	int		i;
 	int		p;

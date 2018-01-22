@@ -12,18 +12,20 @@
 
 NAME		=		fillit
 
-DIR			=		./scr
+DIR			=		.
 
-DIR_HEADERS	=		./inc
+DIR_HEADERS	=		$(DIR)
 
-LIB			=		-L./libft -lft
+DIR_LIB		=		$(DIR)/libft
 
-HEADERS		=		-I$(DIR_HEADERS)
+LIB			=		-L$(DIR_LIB) -lft
+
+HEADERS		=		-I$(DIR_HEADERS)	\
+					-I$(DIR_LIB)
 
 SRCS		=		main_fle.c		\
-					output_fle.c	\
-					test.c		\
-					tetras_lib.c
+					input.c		\
+					input_file.c
 
 OBJS		=		$(SRCS:.c=.o)
 
@@ -36,15 +38,20 @@ RM			=		rm -f
 all			:		$(NAME)
 
 $(NAME)		:		$(OBJS)
+					$(MAKE) -C $(DIR_LIB)
 					$(CC) -o $(NAME) $(OBJS) $(CFLAGS) $(HEADERS) $(LIB)
 
 %.o			:		%.c
 					$(CC) -o $@ -c $< $(CFLAGS) $(HEADERS)
 
-clean		:
-					$(RM) $(OBJS)
+clean			:
+						$(MAKE) -C $(DIR_LIB) clean
+						$(RM) $(OBJS)
 
-fclean		:		clean
-					$(RM) $(NAME)
+fclean			:		clean
+						$(MAKE) -C $(DIR_LIB) fclean
+						$(RM) $(NAME)
 
-re			:		fclean all
+re				:		fclean all
+
+.PHONY			: 		all clean fclean re libft

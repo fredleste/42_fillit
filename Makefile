@@ -6,7 +6,7 @@
 #    By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/08 14:19:31 by mbaron            #+#    #+#              #
-#    Updated: 2018/01/19 21:39:29 by mbaron           ###   ########.fr        #
+#    Updated: 2018/01/22 19:25:55 by fleste-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRCS			=		main.c			\
 						solver_add.c	\
 						output.c		\
 						test.c
-						
+
 OBJS			=		$(SRCS:.c=.o)
 
 CC				=		gcc
@@ -55,7 +55,7 @@ clean			:
 fclean			:		clean
 						$(MAKE) -C $(DIR_LIB) fclean
 						$(RM) $(NAME)
-						
+
 re				:		fclean all
 
-.PHONY			: 		libft
+.PHONY			: 		all clean fclean re libft
