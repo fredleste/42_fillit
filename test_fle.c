@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 11:39:33 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/19 18:25:19 by fleste-l         ###   ########.fr       */
+/*   Updated: 2018/01/22 17:28:02 by fleste-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,63 +98,47 @@ int		put_binary(char *str, int tetras_lib[])
 	return (i == TETRAS_LIB_NB ? -1 : n);
 }
 
-void	init_pieces(t_piece pieces[], int pieces_nb)
+void	init_piece(t_piece pieces[], int p)
 {
-	int		i;
-
-	i = 0;
-	while (i < pieces_nb)
-	{
-		pieces[i].l = -1;
-		pieces[i].c = -1;
-		pieces[i].first = -1;
-		pieces[i].last = -1;
-		pieces[i].pos = -1;
-		i++;
-	}
-}
-
-void	put_pieces(t_piece pieces[], int pieces_nb)
-{
-	int		i;
 	int		x;
 
-	i = 0;
-	while (i < pieces_nb)
+	pieces[p].l = -1;
+	pieces[p].c = -1;
+	pieces[p].first = -1;
+	pieces[p].last = -1;
+	pieces[p].pos = -1;
+	x = 0;
+	while (!(pieces[p].n & (1u << x)))
+		x++;
+	pieces[p].min = x - 1;
+	pieces[p].h = 4 - (x / 4);
+	x = 15;
+	while (!(pieces[p].n & (1u << x)))
+		x--;
+	pieces[p].max = x;
+	x = 0;
+	while (!(pieces[p].n & (0x1111u << x)))
+		x++;
+	pieces[p].w = 4 - x;
+}
+
+void	put_piece(t_piece pieces[], int p)
+{
+	int		x;
+
+	x = p;
+	pieces[p].prev = -1;
+	while (x && pieces[p].prev == -1)
 	{
-		x = i;
-		pieces[i].prev = -1;
-		while (x && pieces[i].prev == -1)
+		x--;
+		if (pieces[p].n == pieces[x].n)
 		{
-			x--;
-			if (pieces[i].n == pieces[x].n)
-				pieces[i].prev = x;
+			ft_memcpy(&pieces[p], &pieces[x], sizeof(t_piece));
+			pieces[p].prev = x;
 		}
-		if (pieces[i].prev == -1)
-		{
-			x = 0;
-			while (!(pieces[i].n & (1u << x)))
-				x++;
-			pieces[i].min = x - 1;
-			pieces[i].h = 4 - (x / 4);
-			x = 15;
-			while (!(pieces[i].n & (1u << x)))
-				x--;
-			pieces[i].max = x;
-			x = 0;
-			while (!(pieces[i].n & (0x1111u << x)))
-				x++;
-			pieces[i].w = 4 - x;
-		}
-		else
-		{
-			pieces[i].min = pieces[x].min;
-			pieces[i].max = pieces[x].max;
-			pieces[i].h = pieces[x].h;
-			pieces[i].w = pieces[x].w;
-		}
-		i++;
 	}
+	if (pieces[p].prev == -1)
+		init_piece(pieces, p);
 }
 
 int		test_source(char *file_name, int tetras_lib[], t_piece pieces[])
@@ -182,13 +166,8 @@ int		test_source(char *file_name, int tetras_lib[], t_piece pieces[])
 			put_error_log("Error wrong binary tetra\n");
 			return (-1);
 		}
-		/*i = p;
-		while (i && pieces[i - 1].n != pieces[p].n)
-			i--;
-		pieces[p].prev = pieces[i - 1].n == pieces[p].n ? i - 1 : -1;*/
+		put_piece(pieces, p);
 		p++;
 	}
-	init_pieces(pieces, pieces_nb);
-	put_pieces(pieces, pieces_nb);
 	return (pieces_nb);
 }
