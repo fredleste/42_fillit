@@ -24,7 +24,7 @@ HEADERS		=		-I$(DIR_HEADERS)	\
 					-I$(DIR_LIB)
 
 SRCS		=		main_fle.c		\
-					input.c		\
+					input_fle.c		\
 					input_file.c
 
 OBJS		=		$(SRCS:.c=.o)
