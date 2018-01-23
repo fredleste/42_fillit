@@ -6,12 +6,12 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:03:55 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/20 23:18:51 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/23 08:35:22 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#ifndef FILLIT_H
+# define FILLIT_H
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
@@ -62,6 +62,7 @@ typedef struct	s_piece
 }				t_piece;
 int				put_error(int error);
 int				put_error_log(const char *str);
+int				put_file(char *file_name, char *str_pieces);
 int				test_source(char *file_name, int tetras_lib[],
 	t_piece pieces[]);
 void			init_piece(t_piece *piece);

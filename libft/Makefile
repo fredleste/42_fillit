@@ -6,7 +6,10 @@
 #    By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/24 09:32:18 by mbaron            #+#    #+#              #
-#    Updated: 2018/01/20 14:38:42 by mbaron           ###   ########.fr        #
+#    Updated: 2018/01/23 08:36:03 by mbaron           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+#    Updated: 2018/01/23 08:31:15 by mbaron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +49,7 @@ SRCS			=	$(DIR)/ft_memset.c			$(DIR)/ft_bzero.c			\
 					$(DIR)/ft_lstdel.c			$(DIR)/ft_lstadd.c			\
 					$(DIR)/ft_lstiter.c			$(DIR)/ft_lstmap.c			\
 					$(DIR)/ft_mba_lstnew.c		$(DIR)/ft_mba_lst2new.c		\
-					$(DIR)/ft_mba_lst2delone.c		\
+					$(DIR)/ft_mba_lst2delone.c								\
 					$(DIR)/ft_mba_lst2add.c		$(DIR)/ft_mba_lst2del.c		\
 					$(DIR)/ft_mba_lstaddafter.c	$(DIR)/ft_mba_lst2addafter.c \
 					$(DIR)/ft_mba_lstfind.c		$(DIR)/ft_mba_lst2find.c	\

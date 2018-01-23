@@ -6,7 +6,7 @@
 #    By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/08 14:19:31 by mbaron            #+#    #+#              #
-#    Updated: 2018/01/19 21:39:29 by mbaron           ###   ########.fr        #
+#    Updated: 2018/01/23 08:30:32 by mbaron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,11 +26,12 @@ HEADERS			=		-I$(DIR_HEADERS)	\
 						-I$(DIR_LIB_HEADERS)
 
 SRCS			=		main.c			\
+						input.c			\
+						input_file.c	\
 						solver.c		\
 						solver_add.c	\
-						output.c		\
-						test.c
-						
+						output.c		
+
 OBJS			=		$(SRCS:.c=.o)
 
 CC				=		gcc
@@ -55,7 +56,7 @@ clean			:
 fclean			:		clean
 						$(MAKE) -C $(DIR_LIB) fclean
 						$(RM) $(NAME)
-						
+
 re				:		fclean all
 
-.PHONY			: 		libft
+.PHONY			: 		all clean fclean re libft
