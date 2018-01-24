@@ -20,11 +20,12 @@ HEADERS				=		-I$(DIR_HEADERS)		\
 							-I$(DIR_HEADERS_FILLIT)	\
 							-I$(DIR_HEADERS_LIB)
 
-SRCS				=		$(DIR)/main_test.c 				\
-							$(DIR)/helper_test.c 			\
-							$(DIR)/output_test.c 			\
-							$(DIR_FILLIT_SRC)/test.c		\
-							$(DIR_FILLIT_SRC)/solver.c		\
+SRCS				=		$(DIR)/main_test.c 					\
+							$(DIR)/helper_test.c 				\
+							$(DIR)/output_test.c 				\
+							$(DIR_FILLIT_SRC)/input.c			\
+							$(DIR_FILLIT_SRC)/input_file.c		\
+							$(DIR_FILLIT_SRC)/solver.c			\
 							$(DIR_FILLIT_SRC)/solver_add.c		\
 							$(DIR_FILLIT_SRC)/output.c
 
