@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/17 09:00:49 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/21 08:08:04 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/24 14:45:36 by fleste-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int				main(int argc, char *argv[])
 	FILLIT_TEST_INPUT_FILE_8, FILLIT_TEST_INPUT_FILE_9};
 	*/
 	const char	files_input_test[FILLIT_TEST_INPUT_NB][256] =
-	{FILLIT_TEST_INPUT_FILE_8, FILLIT_TEST_INPUT_FILE_2,
+	{FILLIT_TEST_INPUT_FILE_3, FILLIT_TEST_INPUT_FILE_2,
 	FILLIT_TEST_INPUT_FILE_1, FILLIT_TEST_INPUT_FILE_0};
 	clock_t		timer_t[FILLIT_TEST_INPUT_NB][4];
 	int			grid_size[FILLIT_TEST_INPUT_NB];
