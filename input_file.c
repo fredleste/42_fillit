@@ -6,7 +6,7 @@
 /*   By: fleste-l <fleste-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 18:59:05 by fleste-l          #+#    #+#             */
-/*   Updated: 2018/01/22 19:00:29 by fleste-l         ###   ########.fr       */
+/*   Updated: 2018/01/24 17:33:34 by fleste-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int			put_file(char *file_name, char *str_pieces)
 	int		n;
 	int		i;
 	int		j;
-	char	buf[BUF_SIZE + 1];
+	char	buf[BUF_SIZE];
 
 	n = read_file(file_name, buf);
 	if ((n + 1) % 21 != 0)
@@ -51,6 +51,5 @@ int			put_file(char *file_name, char *str_pieces)
 			str_pieces[j++] = buf[i];
 		i++;
 	}
-	str_pieces[j] = '\0';
 	return ((n + 1) / 21);
 }

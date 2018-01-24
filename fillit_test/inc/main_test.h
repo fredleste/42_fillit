@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/17 11:44:23 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/24 15:19:00 by fleste-l         ###   ########.fr       */
+/*   Updated: 2018/01/24 18:32:30 by fleste-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define FILLIT_TEST_DESCRIPTION "Default description"
 # define FILLIT_TEST_INPUT_FILE_0 "./samples/valid_sample2.fillit"
 # define FILLIT_TEST_INPUT_FILE_1 "./samples/valid_sample3.fillit"
-# define FILLIT_TEST_INPUT_FILE_2 "./samples/valid_sample_forum_18.fillit"
+# define FILLIT_TEST_INPUT_FILE_2 "./samples/valid_sample_forum_26.fillit"
 # define FILLIT_TEST_INPUT_FILE_3 "./samples/valid_sample_19.fillit"
 # define FILLIT_TEST_INPUT_FILE_4 "./samples/valid_sample_forum_10.fillit"
 # define FILLIT_TEST_INPUT_FILE_5 "./samples/valid_sample_forum_11.fillit"
