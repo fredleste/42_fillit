@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 11:39:33 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/25 18:18:03 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/25 23:45:06 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,7 @@ static void	input_init_piece(t_piece *piece)
 	x = 0;
 	while (!(piece->n & (1u << x)))
 		x++;
-	piece->min = x - 1;
 	piece->h = 4 - (x / 4);
-	x = 15;
-	while (!(piece->n & (1u << x)))
-		x--;
-	piece->max = x;
 	x = 0;
 	while (!(piece->n & (0x1111u << x)))
 		x++;
