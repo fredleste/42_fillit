@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:02:11 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/23 08:35:27 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/25 18:11:29 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,6 @@ int			put_error(int error)
 		ft_putstr("error\n");
 	else
 		ft_putstr(FILLIT_USAGE);
-	return (1);
-}
-
-int			put_error_log(const char *str)
-{
-	ft_putstr_fd(str, 2);
 	return (1);
 }
 
@@ -54,8 +48,7 @@ void		init_piece(t_piece *piece)
 {
 	piece->l = -1;
 	piece->c = -1;
-	piece->first = -1;
-	//piece->last = -1;
+	piece->last = -1;
 	piece->pos = -1;
 }
 
