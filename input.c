@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 11:39:33 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/22 19:05:24 by fleste-l         ###   ########.fr       */
+/*   Updated: 2018/01/25 17:57:30 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int			test_source(char *file_name, int tetras_lib[], t_piece pieces[])
 	int		i;
 	int		p;
 	int		pieces_nb;
-	char	str[16];
+	char	str[17];
 	char	str_pieces[BUF_SIZE + 1];
 
 	pieces_nb = put_file(file_name, str_pieces);

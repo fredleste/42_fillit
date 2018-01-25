@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:51:32 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/25 16:16:36 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/25 17:55:46 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static int	calc_grid_size(int pieces_nb)
 		i++;
 	return (i);
 }
+
 /*
 int		solver_write_grid(int grid[], int grid_size)
 {
@@ -57,31 +58,25 @@ int		solver_write_grid(int grid[], int grid_size)
 	return (1);
 }
 */
+
 static int	solver_init(int grid[], int grid_size, t_piece *pieces,
 	int *p_bt_size)
 {
 	int		i;
-	int		j;
 
+	grid[0] = GRID_ALL_ONE;
+	i = grid_size;
+	while (--i > -1)
+		grid[0] &= ~(1 << (15 - i));
 	i = 0;
-	while (i < GRID_MAX)
-	{
-		grid[i] = GRID_ALL_ONE;
-		if (i < grid_size)
-		{
-			j = 0;
-			while (j < grid_size)
-			{
-				grid[i] &= ~(1 << (15 - j));
-				j++;
-			}
-		}
-		i++;
-	}
+	while (++i < GRID_MAX)
+		grid[i] = grid[0];
 	i = *p_bt_size;
 	while (i--)
 	{
-		init_piece(&pieces[i]);
+		pieces[i].l = -1;
+		pieces[i].c = -1;
+		pieces[i].pos = -1;
 		pieces[i].last = -1;
 	}
 	*p_bt_size = 0;
