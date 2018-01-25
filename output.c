@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 13:01:42 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/25 17:34:25 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/25 18:05:51 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	del_grid(char **grid, int grid_size)
 	grid = NULL;
 }
 
-char	**init_grid(int grid_size)
+char		**init_grid(int grid_size)
 {
 	int		l;
 	int		c;
@@ -52,30 +52,6 @@ char	**init_grid(int grid_size)
 		l++;
 	}
 	return (grid);
-}
-
-void	set_tetra_grid(char **grid, t_piece *piece, char letter)
-{
-	int		i;
-	int		l;
-	int		c;
-
-	i = piece->max;
-	l = piece->l;
-	c = 15 + piece->c;
-	while (i > piece->min)
-	{
-		if (piece->n & (1 << i))
-		{
-			grid[l][c - i] = letter;
-		}
-		if (!(i % 4))
-		{
-			l++;
-			c -= 4;
-		}
-		i--;
-	}
 }
 
 static void	fill_grid(char **grid, t_piece *pieces, int pieces_nb)
@@ -125,7 +101,7 @@ static void	write_grid(char **grid, int grid_size)
 	}
 }
 
-int		put_grid(t_piece *pieces, int pieces_nb, int grid_size)
+int			put_grid(t_piece *pieces, int pieces_nb, int grid_size)
 {
 	char	**grid;
 

@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/17 11:44:23 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/21 07:58:45 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/25 18:09:49 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define MAIN_TEST_H
 # include <stdio.h>
 # include <time.h>
-# define FILLIT_TEST_USAGE "./fillit_test [-f output_file_name][-d description]\n"
+# define FILLIT_TEST_USAGE "./fillit_test [-f output_filename][-d desc]\n"
 # define FILLIT_TEST_OUTPUT_FILE "./output/result.fillit"
 # define FILLIT_TEST_DESCRIPTION "Default description"
 # define FILLIT_TEST_INPUT_FILE_0 "./samples/valid_sample2.fillit"
