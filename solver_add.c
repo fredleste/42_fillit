@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 20:13:20 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/25 18:04:14 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/25 19:44:28 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,15 @@ static int		test_piece_grid(t_piece *piece, int l, int c, int grid[])
 {
 	int		i;
 
+	i = 0;
+	while (i < piece->h)
+	{
+		if (((grid[l + i] << c) & 0xF000) & ((piece->n << (4 * i)) & 0xF000))
+			return (0);
+		i++;
+	}
+	return (1);
+	/*
 	i = piece->max;
 	while (i > piece->min)
 	{
@@ -51,6 +60,7 @@ static int		test_piece_grid(t_piece *piece, int l, int c, int grid[])
 		}
 		i--;
 	}
+	*/
 	return (1);
 }
 
