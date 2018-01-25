@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:02:11 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/25 18:11:29 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/25 22:19:46 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,35 @@ void		init_piece(t_piece *piece)
 	piece->pos = -1;
 }
 
+static void	put_grid(t_piece *pieces, int pieces_nb, int grid_size)
+{
+	char	grid[GRID_OUTPUT_MAX + 1];
+	int		i;
+	int		j;
+	int		k;
+
+	ft_memset((void *)grid, C_POINT, (grid_size + 1) * grid_size);
+	grid[(grid_size + 1) * grid_size] = '\0';
+	i = -1;
+	while (++i < pieces_nb)
+	{
+		grid[(grid_size + 1) * (i + 1) - 1] = '\n';
+		j = 15;
+		k = 4;
+		while (k)
+		{
+			if (pieces[i].n & (1u << j))
+			{
+				grid[(grid_size + 1) * (pieces[i].l + (15 - j) / 4)
+				+ pieces[i].c + (15 - j) % 4] = 'A' + i;
+				k--;
+			}
+			j--;
+		}
+	}
+	ft_putstr(grid);
+}
+
 int			main(int argc, char *argv[])
 {
 	int			tetras_lib[TETRAS_LIB_NB];
@@ -62,11 +91,10 @@ int			main(int argc, char *argv[])
 	if (argc != 2)
 		return (put_error(0));
 	init_tetras_lib(tetras_lib);
-	pieces_nb = test_source(argv[1], tetras_lib, pieces);
-	if (pieces_nb < 1)
+	if (!(pieces_nb = test_source(argv[1], tetras_lib, pieces)))
 		return (put_error(1));
-	grid_size = solver(pieces, pieces_nb);
-	if (grid_size < 1)
+	if (!(grid_size = solver(pieces, pieces_nb)))
 		return (put_error(1));
-	return (put_grid(pieces, pieces_nb, grid_size));
+	put_grid(pieces, pieces_nb, grid_size);
+	return (0);
 }

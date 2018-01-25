@@ -6,33 +6,22 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 20:13:20 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/25 19:44:28 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/25 20:06:48 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static int		toggle_piece_grid(t_piece *piece, int grid[])
+static void		toggle_piece_grid(t_piece *piece, int grid[])
 {
 	int		i;
-	int		l;
-	int		c;
 
-	i = piece->max;
-	l = piece->l;
-	c = piece->c;
-	while (i > piece->min)
+	i = 0;
+	while (i < piece->h)
 	{
-		if (piece->n & (1 << i))
-			grid[l] ^= 1 << (i - c);
-		if (!(i & 3))
-		{
-			l++;
-			c -= 4;
-		}
-		i--;
+		grid[piece->l + i] ^= ((piece->n << (4 * i)) & 0xF000) >> piece->c;
+		i++;
 	}
-	return (1);
 }
 
 static int		test_piece_grid(t_piece *piece, int l, int c, int grid[])
@@ -46,21 +35,6 @@ static int		test_piece_grid(t_piece *piece, int l, int c, int grid[])
 			return (0);
 		i++;
 	}
-	return (1);
-	/*
-	i = piece->max;
-	while (i > piece->min)
-	{
-		if ((piece->n & (1 << i)) && (grid[l] & (1 << (i - c))))
-			return (0);
-		if (!(i & 3))
-		{
-			l++;
-			c -= 4;
-		}
-		i--;
-	}
-	*/
 	return (1);
 }
 

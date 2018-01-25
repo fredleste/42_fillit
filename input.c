@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 11:39:33 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/25 17:57:30 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/25 22:13:48 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ static void	input_init_piece(t_piece *piece)
 	x = 0;
 	while (!(piece->n & (1u << x)))
 		x++;
-	piece->min = x - 1;
+	//piece->min = x - 1;
 	piece->h = 4 - (x / 4);
 	x = 15;
 	while (!(piece->n & (1u << x)))
 		x--;
-	piece->max = x;
+	//piece->max = x;
 	x = 0;
 	while (!(piece->n & (0x1111u << x)))
 		x++;
@@ -81,7 +81,7 @@ int			test_source(char *file_name, int tetras_lib[], t_piece pieces[])
 	int		i;
 	int		p;
 	int		pieces_nb;
-	char	str[17];
+	char	str[16];
 	char	str_pieces[BUF_SIZE + 1];
 
 	pieces_nb = put_file(file_name, str_pieces);
