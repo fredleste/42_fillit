@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 20:13:20 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/24 06:55:14 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/25 16:18:59 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static int		toggle_piece_grid(t_piece *piece, int grid[])
 	return (1);
 }
 
+/*
 static int		get_next_line_last(t_piece *piece, int grid[], int l)
 {
 	int		i;
@@ -62,6 +63,7 @@ static int		get_next_line_next(t_piece *piece, int grid[], int l)
 	}
 	return (l);
 }
+*/
 
 static int		test_piece_grid(t_piece *piece, int l, int c, int grid[])
 {
@@ -90,7 +92,7 @@ static int		get_last_position(t_piece *pieces, int bt_size, int grid[],
 	int		c;
 	int		l_min;
 	int		c_min;
-	int		l_next;
+	//int		l_next;
 
 	p = &pieces[bt_size];
 	l_min = p->prev != -1 ? pieces[p->prev].l : 0;
@@ -101,6 +103,7 @@ static int		get_last_position(t_piece *pieces, int bt_size, int grid[],
 	{
 		if (p->pos > 16 * l + c)
 			return (-1);
+			/*
 		l_next = get_next_line_last(p, grid, l);
 		if (l != l_next)
 		{
@@ -112,6 +115,7 @@ static int		get_last_position(t_piece *pieces, int bt_size, int grid[],
 			else
 				return (0);
 		}
+		*/
 		if (test_piece_grid(p, l, c, grid))
 			return (l * 16 + c);
 		c--;
@@ -128,7 +132,7 @@ static int		get_next_position(t_piece *pieces, int bt_size, int grid[],
 	int grid_size)
 {
 	t_piece	*p;
-	int		l_next;
+	//int		l_next;
 
 	p = &pieces[bt_size];
 	// if (p->l * 16 + p->c == p->last)
@@ -150,6 +154,7 @@ static int		get_next_position(t_piece *pieces, int bt_size, int grid[],
 	}
 	else
 		p->c += 1;
+		/*
 	l_next = get_next_line_next(p, grid, p->l);
 	if (p->l != l_next)
 	{
@@ -164,6 +169,7 @@ static int		get_next_position(t_piece *pieces, int bt_size, int grid[],
 			return(0);
 		}
 	}
+	*/
 	p->pos = 16 * p->l + p->c;
 	return (test_piece_grid(p, p->l, p->c, grid));
 }
