@@ -6,50 +6,34 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 20:13:20 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/25 18:04:14 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/26 13:13:42 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static int		toggle_piece_grid(t_piece *piece, int grid[])
+static void		toggle_piece_grid(t_piece *piece, int grid[])
 {
 	int		i;
-	int		l;
-	int		c;
 
-	i = piece->max;
-	l = piece->l;
-	c = piece->c;
-	while (i > piece->min)
+	i = 0;
+	while (i < piece->h)
 	{
-		if (piece->n & (1 << i))
-			grid[l] ^= 1 << (i - c);
-		if (!(i & 3))
-		{
-			l++;
-			c -= 4;
-		}
-		i--;
+		grid[piece->l + i] ^= ((piece->n << (4 * i)) & 0xF000) >> piece->c;
+		i++;
 	}
-	return (1);
 }
 
 static int		test_piece_grid(t_piece *piece, int l, int c, int grid[])
 {
 	int		i;
 
-	i = piece->max;
-	while (i > piece->min)
+	i = 0;
+	while (i < piece->h)
 	{
-		if ((piece->n & (1 << i)) && (grid[l] & (1 << (i - c))))
+		if (((grid[l + i] << c) & 0xF000) & ((piece->n << (4 * i)) & 0xF000))
 			return (0);
-		if (!(i & 3))
-		{
-			l++;
-			c -= 4;
-		}
-		i--;
+		i++;
 	}
 	return (1);
 }
@@ -112,18 +96,14 @@ static int		get_next_position(t_piece *pieces, int bt_size, int grid[],
 }
 
 int				solver_add_piece_grid(t_piece *pieces, int *p_bt_size,
-	int grid[],
-	int grid_size)
+	int grid[], int grid_size)
 {
 	t_piece	*piece;
 
 	piece = pieces + *p_bt_size;
 	if (piece->pos == -1)
-	{
 		piece->last = get_last_position(pieces, *p_bt_size, grid, grid_size);
-	}
-	if ((piece->last == -1 || (piece->last > -1
-		&& piece->pos == piece->last))
+	if ((piece->last == -1 || (piece->last != -1 && piece->pos == piece->last))
 		? 0 : get_next_position(pieces, *p_bt_size, grid, grid_size))
 	{
 		toggle_piece_grid(piece, grid);

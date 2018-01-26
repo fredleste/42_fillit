@@ -6,12 +6,11 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 18:48:34 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/20 14:34:06 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/26 13:23:07 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <strings.h>
-#include <stdlib.h>
+#include <string.h>
 
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {

@@ -6,7 +6,7 @@
 #    By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/08 14:19:31 by mbaron            #+#    #+#              #
-#    Updated: 2018/01/23 08:30:32 by mbaron           ###   ########.fr        #
+#    Updated: 2018/01/26 12:43:37 by mbaron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,7 @@ SRCS			=		main.c			\
 						input.c			\
 						input_file.c	\
 						solver.c		\
-						solver_add.c	\
-						output.c		
+						solver_add.c
 
 OBJS			=		$(SRCS:.c=.o)
 
