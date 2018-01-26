@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 11:39:33 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/26 15:27:15 by fleste-l         ###   ########.fr       */
+/*   Updated: 2018/01/26 16:59:48 by fleste-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,14 @@ static int	put_binary(char *str, int tetras_lib[])
 	while (i < TETRAS_LIB_NB && n != tetras_lib[i])
 		i++;
 	return (i == TETRAS_LIB_NB ? 0 : n);
+}
+
+void		init_piece(t_piece *piece)
+{
+	piece->l = -1;
+	piece->c = -1;
+	piece->last = -1;
+	piece->pos = -1;
 }
 
 static void	input_init_piece(t_piece *piece)
