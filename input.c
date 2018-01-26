@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 11:39:33 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/26 13:07:05 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/26 15:30:32 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@ static int	put_binary(char *str, int tetras_lib[])
 		if (str[i] == '#')
 			n = n | (1 << (15 - i));
 		else if (str[i] != '.')
-			return (-1);
+			return (0);
 		i++;
 	}
+	if (!n)
+		return (0);
 	while ((n & 0x8888) == 0)
 		n = n << 1;
 	while ((n & 0xf000) == 0)
@@ -34,7 +36,7 @@ static int	put_binary(char *str, int tetras_lib[])
 	i = 0;
 	while (i < TETRAS_LIB_NB && n != tetras_lib[i])
 		i++;
-	return (i == TETRAS_LIB_NB ? -1 : n);
+	return (i == TETRAS_LIB_NB ? 0 : n);
 }
 
 static void	input_init_piece(t_piece *piece)
@@ -95,8 +97,7 @@ int			test_source(char *file_name, int tetras_lib[], t_piece pieces[])
 			str[i] = str_pieces[(p * 16) + i];
 			i++;
 		}
-		pieces[p].n = put_binary(str, tetras_lib);
-		if (pieces[p].n == -1)
+		if (!(pieces[p].n = put_binary(str, tetras_lib)))
 			return (0);
 		put_piece(pieces, p);
 		p++;
