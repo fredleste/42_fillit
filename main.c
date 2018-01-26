@@ -6,13 +6,13 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:02:11 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/25 22:19:46 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/26 13:06:52 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int			put_error(int error)
+static int	put_error(int error)
 {
 	if (error)
 		ft_putstr("error\n");
@@ -93,8 +93,7 @@ int			main(int argc, char *argv[])
 	init_tetras_lib(tetras_lib);
 	if (!(pieces_nb = test_source(argv[1], tetras_lib, pieces)))
 		return (put_error(1));
-	if (!(grid_size = solver(pieces, pieces_nb)))
-		return (put_error(1));
+	grid_size = solver(pieces, pieces_nb);
 	put_grid(pieces, pieces_nb, grid_size);
 	return (0);
 }

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbaron <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 18:21:31 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/05 18:45:48 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/26 13:21:37 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include <strings.h>
+# include <string.h>
 
 typedef struct	s_list
 {

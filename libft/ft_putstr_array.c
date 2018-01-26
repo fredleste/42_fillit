@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_array.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbaron <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 15:13:16 by mbaron            #+#    #+#             */
-/*   Updated: 2017/12/18 16:55:51 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/26 13:36:02 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <strings.h>
+#include <string.h>
 #include "libft.h"
 
 void	ft_putstr_array(char *tab[], size_t tabl)
@@ -21,8 +20,7 @@ void	ft_putstr_array(char *tab[], size_t tabl)
 	i = 0;
 	while (i < tabl)
 	{
-		ft_putstr(tab[i]);
-		write(1, "\n", 1);
+		ft_putendl(tab[i]);
 		i++;
 	}
 }
