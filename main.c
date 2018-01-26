@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:02:11 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/26 13:06:52 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/26 16:41:02 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,18 @@ static void	init_tetras_lib(int tetras_lib[])
 	tetras_lib[18] = TETRA_N_18;
 }
 
-void		init_piece(t_piece *piece)
+static void	grid_init(char grid[], int grid_size)
 {
-	piece->l = -1;
-	piece->c = -1;
-	piece->last = -1;
-	piece->pos = -1;
+	int		i;
+
+	ft_memset((void *)grid, C_POINT, (grid_size + 1) * grid_size);
+	grid[(grid_size + 1) * grid_size] = '\0';
+	i = 1;
+	while (i <= grid_size)
+	{
+		grid[(grid_size + 1) * i - 1] = '\n';
+		i++;
+	}
 }
 
 static void	put_grid(t_piece *pieces, int pieces_nb, int grid_size)
@@ -59,12 +65,10 @@ static void	put_grid(t_piece *pieces, int pieces_nb, int grid_size)
 	int		j;
 	int		k;
 
-	ft_memset((void *)grid, C_POINT, (grid_size + 1) * grid_size);
-	grid[(grid_size + 1) * grid_size] = '\0';
-	i = -1;
-	while (++i < pieces_nb)
+	grid_init(grid, grid_size);
+	i = 0;
+	while (i < pieces_nb)
 	{
-		grid[(grid_size + 1) * (i + 1) - 1] = '\n';
 		j = 15;
 		k = 4;
 		while (k)
@@ -77,6 +81,7 @@ static void	put_grid(t_piece *pieces, int pieces_nb, int grid_size)
 			}
 			j--;
 		}
+		i++;
 	}
 	ft_putstr(grid);
 }
