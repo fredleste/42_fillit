@@ -6,7 +6,7 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 11:39:33 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/26 14:57:25 by fleste-l         ###   ########.fr       */
+/*   Updated: 2018/01/26 15:27:15 by fleste-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static int	put_binary(char *str, int tetras_lib[])
 			return (0);
 		i++;
 	}
+	if (!n)
+		return (0);
 	while ((n & 0x8888) == 0)
 		n = n << 1;
 	while ((n & 0xf000) == 0)
@@ -95,8 +97,7 @@ int			test_source(char *file_name, int tetras_lib[], t_piece pieces[])
 			str[i] = str_pieces[(p * 16) + i];
 			i++;
 		}
-		pieces[p].n = put_binary(str, tetras_lib);
-		if (pieces[p].n == -1)
+		if (!(pieces[p].n = put_binary(str, tetras_lib)))
 			return (0);
 		put_piece(pieces, p);
 		p++;
