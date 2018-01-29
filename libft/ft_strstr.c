@@ -6,12 +6,11 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 15:59:27 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/20 14:35:38 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/26 13:32:20 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <strings.h>
-#include <stdlib.h>
+#include <string.h>
 
 char	*ft_strstr(const char *haystack, const char *needle)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbaron <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 17:56:51 by mbaron            #+#    #+#             */
-/*   Updated: 2017/12/19 14:27:26 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/26 13:23:46 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <strings.h>
+#include <string.h>
 
 int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {

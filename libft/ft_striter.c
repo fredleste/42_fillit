@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_striter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbaron <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 13:07:07 by mbaron            #+#    #+#             */
-/*   Updated: 2017/12/18 16:40:54 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/26 13:29:06 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <strings.h>
+#include <string.h>
 
 void	ft_striter(char *s, void (*f)(char *))
 {

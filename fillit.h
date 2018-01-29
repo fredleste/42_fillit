@@ -6,13 +6,12 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:03:55 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/23 08:39:20 by mbaron           ###   ########.fr       */
+/*   Updated: 2018/01/25 22:23:13 by mbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
-# include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
 # include <sys/types.h>
@@ -20,6 +19,9 @@
 # include <unistd.h>
 # include "libft.h"
 # define GRID_MAX 16
+# define GRID_SOLVER_MAX 256
+# define GRID_MAX_1 17
+# define GRID_OUTPUT_MAX 272
 # define TETRAS_LIB_NB 19
 # define PIECES_NB_MAX 26
 # define FILLIT_USAGE "usage: ./fillit source_file\n"
@@ -49,19 +51,14 @@
 typedef struct	s_piece
 {
 	int			n;
-	int			min;
-	int			max;
 	int			h;
 	int			w;
 	int			l;
 	int			c;
-	int			first;
 	int			last;
 	int			pos;
 	int			prev;
 }				t_piece;
-int				put_error(int error);
-int				put_error_log(const char *str);
 int				put_file(char *file_name, char *str_pieces);
 int				test_source(char *file_name, int tetras_lib[],
 	t_piece pieces[]);
@@ -69,6 +66,5 @@ void			init_piece(t_piece *piece);
 int				solver_add_piece_grid(t_piece *piece, int *bt_size, int grid[],
 	int grid_size);
 int				solver(t_piece *pieces, int pieces_nb);
-int				put_grid(t_piece *pieces, int pieces_nb, int grid_size);
 int				solver_write_grid(int grid[], int grid_size);
 #endif
