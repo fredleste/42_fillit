@@ -6,10 +6,12 @@
 /*   By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:02:11 by mbaron            #+#    #+#             */
-/*   Updated: 2018/01/30 16:51:36 by fleste-l         ###   ########.fr       */
+/*   Updated: 2018/01/30 16:44:57 by fleste-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <time.h>
+#include <stdio.h>
 #include "fillit.h"
 
 static int	put_error(int error)
@@ -92,7 +94,10 @@ int			main(int argc, char *argv[])
 	t_piece		pieces[PIECES_NB_MAX];
 	int			pieces_nb;
 	int			grid_size;
+	long		clk_tck = CLOCKS_PER_SEC;
+	clock_t		t1, t2;
 
+	t1 = clock();
 	if (argc != 2)
 		return (put_error(0));
 	init_tetras_lib(tetras_lib);
@@ -100,5 +105,8 @@ int			main(int argc, char *argv[])
 		return (put_error(1));
 	grid_size = solver(pieces, pieces_nb);
 	put_grid(pieces, pieces_nb, grid_size);
+	t2 = clock();
+	printf("Nb ticks/seconde = %ld, Nb ticks depart : %ld, Nb ticks final : %ld\n", clk_tck, t1, t2);
+	printf("Temps consomme (s) : %lf \n", (double)(t2 - t1) / (double)clk_tck);
 	return (0);
 }
