@@ -6,7 +6,7 @@
 #    By: mbaron <mbaron@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/08 14:19:31 by mbaron            #+#    #+#              #
-#    Updated: 2018/01/26 12:43:37 by mbaron           ###   ########.fr        #
+#    Updated: 2018/01/30 16:56:14 by fleste-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ LIB				=		-L$(DIR_LIB) -lft
 HEADERS			=		-I$(DIR_HEADERS)	\
 						-I$(DIR_LIB_HEADERS)
 
-SRCS			=		main.c			\
+SRCS			=		main_time.c			\
 						input.c			\
 						input_file.c	\
 						solver.c		\
